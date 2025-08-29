@@ -21,6 +21,10 @@ a standard, universal way according to accounting best practices and accounting 
 ## Requirements
 Accountinglib requires Java 21.
 
+## Why?
+
+Accountinglib is a minimal, standards-first Java toolkit for accounting: a double-entry core with built-in SAF-T export and UBL invoice support. It reduces duplicate code, improves auditability, and accelerates features. v0.1 delivers a validated ledger, a SAF-T sample that passes XSD in CI, and a basic UBL invoice example—ready to drop into services with semantic-versioned APIs.
+
 ## Background and ideas
 
 The idea is that the Accounting Library (accountinglib) should be used as the core accounting library in an accounting system,
