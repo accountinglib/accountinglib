@@ -9,6 +9,7 @@ a standard, universal way according to accounting best practices and accounting 
 ## Features
 * Double entry accounting system core.
 * Accounting domain objects (Voucher, Invoice, Posting, OrderLines).
+* Supplier Invoices (incoming) and Invoices (outgoing).
 * SAF-T Standard Audit File for Tax https://en.wikipedia.org/wiki/SAF-T
 * PDF document generation with OpenPDF  https://github.com/LibrePDF/OpenPDF/ or Pdfbox https://pdfbox.apache.org/
 * UBL (Universal Business Language) object support https://github.com/phax/ph-ubl
@@ -20,10 +21,13 @@ a standard, universal way according to accounting best practices and accounting 
 ## Requirements
 Accountinglib requires Java 21.
 
-## Usage
+## Background and ideas
 
 The idea is that the Accounting Library (accountinglib) should be used as the core accounting library in an accounting system,
 to perform financial operations according to accounting best practices. 
+
+The Accounting Library (accountinglib) should focus on implementing the most common accounting operations for objects
+such as Invoices and Vouchers, and exchange data in standardized format such as SAF-T and UBL.
 
 ## License 
 GNU Lesser General Public License.
