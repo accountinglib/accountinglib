@@ -29,6 +29,10 @@ to perform financial operations according to accounting best practices.
 The Accounting Library (accountinglib) should focus on implementing the most common accounting operations for objects
 such as Invoices and Vouchers, and exchange data in standardized format such as SAF-T and UBL.
 
+## Todo
+See [Todo.md](TODO.md).
+
+
 ## License 
 GNU Lesser General Public License.
 
