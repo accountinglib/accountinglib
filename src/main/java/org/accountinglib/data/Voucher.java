@@ -1,4 +1,4 @@
-package org.accountinglib;
+package org.accountinglib.data;
 
 /**
  *
