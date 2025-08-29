@@ -9,6 +9,9 @@ The Accounting Library (accountinglib) is an open source library for accounting 
 * UBL (Universal Business Language) object support https://github.com/phax/ph-ubl
 * BigDecimal for number operations. Possibly using an adapter.
 
+# Requirements
+Accountinglib requires Java 21.
+
 # License 
 GNU Lesser General Public License
 
