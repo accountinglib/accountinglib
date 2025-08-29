@@ -1,6 +1,10 @@
 # The Accounting Library
 
 The Accounting Library (accountinglib) is an open source library for accounting in Java.
+The goal is to provide an open, standards-based accounting toolkit that makes financial data verifiable,
+transparent, and trustworthy across systems.
+Intended for use in accounting systems to ensure that accounting is performed in 
+a standard, universal way according to accounting best practices and accounting standards.
 
 ## Features
 * Double entry accounting system core.
@@ -9,13 +13,6 @@ The Accounting Library (accountinglib) is an open source library for accounting 
 * PDF document generation with OpenPDF  https://github.com/LibrePDF/OpenPDF/ or Pdfbox https://pdfbox.apache.org/
 * UBL (Universal Business Language) object support https://github.com/phax/ph-ubl
 * BigDecimal for number operations. Possibly using an adapter.
-
-# Background
-Intended for use in accounting systems to ensure that accounting is performed in 
-a standard, universal way according to accounting best practices and accounting standards.
-
-The goal is to provide an open, standards-based accounting toolkit that makes financial data verifiable,
-transparent, and trustworthy across systems.
 
 ## Requirements
 Accountinglib requires Java 21.
