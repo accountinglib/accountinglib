@@ -9,11 +9,11 @@
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>The Universal Accounting Library</name>
+    <name>The Accounting Library</name>
     <description>
-        The Universal Accounting Library (tualib) is an open source library for accounting in Java.
+        The Accounting Library (accountinglib) is an open source library for accounting in Java.
     </description>
-    <url>https://github.com/universalaccountinglibrary/universalaccountinglibrary</url>
+    <url>https://github.com/accountinglib/accountinglib</url>
 
     <licenses>
         <license>
@@ -25,9 +25,9 @@
 
 
     <scm>
-        <url>https://github.com/universalaccountinglibrary/universalaccountinglibrary</url>
-        <connection>scm:git:git://github.com/universalaccountinglibrary/universalaccountinglibrary.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/universalaccountinglibrary/universalaccountinglibrary.git</developerConnection>
+        <url>https://github.com/accountinglib/accountinglib</url>
+        <connection>scm:git:git://github.com/accountinglib/accountinglib.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/accountinglib/accountinglib.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
