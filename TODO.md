@@ -5,6 +5,8 @@
 - [ ] Implement `Account`, `JournalEntry`, `Posting`, `Ledger`
 - [ ] Double-entry validation (sum debits == credits)
 - [ ] `LedgerService` (post entry, trial balance)
+- [ ] Add some SAF-T files for initial ledger example data.
+- [ ] create some unit tests
 
 ## Formats & I/O
 - [ ] SAF-T: minimal exporter
