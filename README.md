@@ -1,6 +1,6 @@
-# The Universal Accounting Library
+# The Accounting Library
 
-The Universal Accounting Library (tualib) is an open source library for accounting in Java.
+The Accounting Library (accountinglib) is an open source library for accounting in Java.
 
 
 
