@@ -17,6 +17,7 @@ a standard, universal way according to accounting best practices and accounting 
 * Agio and disagio calculations for currency transactions.
 * Currency rate conversions.
 * VAT rate calculations (EU) and sales tax calculations (USA).
+* API integration support (swagger)
 
 ## Requirements
 Accountinglib requires Java 21.
