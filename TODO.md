@@ -2,8 +2,6 @@
 
 ## Core (v0.1)
 - [ ] Finalize base package (e.g., `org.accountinglib.*`)
-- [ ] Add `Money` (BigDecimal + `Currency`)
-- [ ] Add `AccountType` enum
 - [ ] Implement `Account`, `JournalEntry`, `Posting`, `Ledger`
 - [ ] Double-entry validation (sum debits == credits)
 - [ ] `LedgerService` (post entry, trial balance)
