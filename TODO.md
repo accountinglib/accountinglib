@@ -28,3 +28,6 @@
 - [ ] Currency rates service + FX gain/loss (agio/disagio)
 - [ ] VAT helpers (EU) / sales tax (US)
 - [ ] SPI for custom exporters/importers
+
+Use cases:
+- SAF-T export
