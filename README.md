@@ -13,9 +13,17 @@ a standard, universal way according to accounting best practices and accounting 
 * PDF document generation with OpenPDF  https://github.com/LibrePDF/OpenPDF/ or Pdfbox https://pdfbox.apache.org/
 * UBL (Universal Business Language) object support https://github.com/phax/ph-ubl
 * BigDecimal for number operations. Possibly using an adapter.
+* Agio and disagio calculations for currency transactions.
+* Currency rate conversions.
+* VAT rate calculations (EU) and sales tax calculations (USA).
 
 ## Requirements
 Accountinglib requires Java 21.
+
+## Usage
+
+The idea is that the Accounting Library (accountinglib) should be used as the core accounting library in an accounting system,
+to perform financial operations according to accounting best practices. 
 
 ## License 
 GNU Lesser General Public License.
