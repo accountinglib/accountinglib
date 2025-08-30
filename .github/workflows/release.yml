@@ -2,17 +2,32 @@ name: Release to Maven Central
 
 on:
   push:
-    tags: ["v*.*.*", "*.*.*"]
+    tags:
+      - 'v*.*.*'
+      - '*.*.*'
   workflow_dispatch: {}
+
+permissions:
+  contents: write   # needed for GitHub Release step
 
 jobs:
   release:
+    if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      # Installs JDK, imports GPG key, and writes ~/.m2/settings.xml
-      # with <server id="ossrh"> credentials that match your POM
+    env:
+      # Reuse common Maven flags
+      MAVEN_CLI_OPTS: "-B -DskipTests"
+      # Needed by maven-gpg-plugin
+      MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0     # good practice for tag workflows
+
+      # JDK + ~/.m2/settings.xml (server id must match <distributionManagement>)
       - name: Set up JDK + Maven settings + GPG
         uses: actions/setup-java@v4
         with:
@@ -25,30 +40,28 @@ jobs:
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
-      # Ensure the POM version equals the tag (vX.Y.Z -> X.Y.Z)
+      # Ensure the built version equals the tag (supports vX.Y.Z and X.Y.Z)
       - name: Sync POM version from tag
         env:
-          VERSION: ${{ github.ref_name }}
+          TAG_NAME: ${{ github.ref_name }}
         run: |
-          VERSION="${VERSION#v}"
+          VERSION="${TAG_NAME#v}"
           echo "Releasing version: $VERSION"
-          mvn -B versions:set -DnewVersion="$VERSION" -DgenerateBackupPoms=false
+          # Guard against SNAPSHOT
+          if [[ "$VERSION" == *-SNAPSHOT ]]; then
+            echo "Tag must not end with -SNAPSHOT"; exit 1
+          fi
+          mvn $MAVEN_CLI_OPTS versions:set -DnewVersion="$VERSION" -DgenerateBackupPoms=false
+          # Optional: show effective version
+          mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec
 
-      # Optional sanity build without signing (avoid accidental GPG at verify)
+      # Fast sanity build without signing
       - name: Verify (no tests, no signing)
-        run: mvn -B -DskipTests -Dgpg.skip=true verify
+        run: mvn $MAVEN_CLI_OPTS -Dgpg.skip=true verify
 
-      # Real deploy: activates your 'release' profile
-      # which runs maven-gpg-plugin + nexus-staging (auto close/release)
+      # Deploy to OSSRH: requires your POM to have:
+      # - <distributionManagement> id="ossrh" pointing to s01.oss.sonatype.org
+      # - a 'release' profile with maven-gpg-plugin + nexus-staging-maven-plugin
       - name: Deploy to OSSRH (staging -> release)
         env:
-          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
-        run: mvn -B -P release -DskipTests deploy
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ github.ref_name }}
-          generate_release_notes: true
+          OSSR
