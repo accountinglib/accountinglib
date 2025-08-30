@@ -8,7 +8,7 @@ on:
   workflow_dispatch: {}
 
 permissions:
-  contents: write  # needed for GitHub Release
+  contents: write
 
 jobs:
   release:
@@ -31,11 +31,68 @@ jobs:
           distribution: temurin
           java-version: 21
           cache: maven
-          server-id: ossrh                     # must match <distributionManagement><...><id> in pom.xml
-          server-username: OSSRH_USERNAME      # pulls from env/secrets below at runtime
+          server-id: ossrh
+          server-username: OSSRH_USERNAME
           server-password: OSSRH_PASSWORD
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
+
+      # --- NEW: Environment + tooling checks ---
+      - name: Print tool versions and env summary
+        run: |
+          echo "JAVA_HOME=$JAVA_HOME"
+          java -version
+          mvn -v
+          gpg --version || true
+          echo "Runner OS: $(uname -a)"
+
+      - name: Verify imported GPG key
+        run: |
+          echo "Listing secret keys (fingerprints only):"
+          gpg --batch --list-secret-keys --keyid-format LONG || true
+
+      # --- NEW: Read POM to see which OSSRH host is configured ---
+      - name: Inspect POM distributionManagement + plugin config
+        run: |
+          echo "Extracting distributionManagement URLs:"
+          grep -nE "<url>https?://s0?1?\.oss\.sonatype\.org[^<]*</url>" -n pom.xml || true
+          echo "Extracting nexus-staging-maven-plugin nexusUrl:"
+          awk '
+            /<artifactId>nexus-staging-maven-plugin<\/artifactId>/{f=1}
+            f && /<nexusUrl>/ {print "nexusUrl:", $0}
+            f && /<\/plugin>/ {f=0}
+          ' pom.xml || true
+
+      # --- NEW: Show effective settings (server entries present/masked) ---
+      - name: Show effective Maven settings (masked)
+        env:
+          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+        run: |
+          echo "Effective settings (passwords hidden):"
+          mvn -B help:effective-settings -DshowPasswords=false | sed -E 's/(<username>)[^<]+(<\/username>)/\1***\2/g' | sed -E 's/(<password>)[^<]+(<\/password>)/\1***\2/g' || true
+          echo "Raw ~/.m2/settings.xml (masked usernames/passwords):"
+          sed -E 's/(<username>)[^<]+(<\/username>)/\1***\2/g; s/(<password>)[^<]+(<\/password>)/\1***\2/g' ~/.m2/settings.xml || true
+
+      # --- NEW: Probe OSSRH API with your token on BOTH hosts ---
+      - name: OSSRH API probe (which host accepts creds?)
+        shell: bash
+        env:
+          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+        run: |
+          set -e
+          probe() {
+            local host="$1"
+            echo "Probing $host ..."
+            CODE=$(curl -sS -u "$OSSRH_USERNAME:$OSSRH_PASSWORD" -o /tmp/resp.txt -w "%{http_code}" \
+              "$host/service/local/staging/profiles" || true)
+            echo "HTTP $CODE from $host/service/local/staging/profiles"
+            head -c 500 /tmp/resp.txt || true
+            echo; echo "----"
+          }
+          probe "https://s01.oss.sonatype.org"
+          probe "https://oss.sonatype.org"
 
       - name: Sync POM version from tag
         env:
@@ -47,17 +104,23 @@ jobs:
             echo "Tag must not end with -SNAPSHOT"; exit 1
           fi
           mvn $MAVEN_CLI_OPTS versions:set -DnewVersion="$VERSION" -DgenerateBackupPoms=false
+          echo -n "POM version now: "
           mvn -q --non-recursive -Dexec.executable=echo -Dexec.args='${project.version}' exec:exec
 
       - name: Verify (no tests, no signing)
         run: mvn $MAVEN_CLI_OPTS -Dgpg.skip=true verify
 
-      - name: Deploy to OSSRH (staging -> release)
+      # --- CHANGED: Add -e -X and extra DEBUG for staging plugin ---
+      - name: Deploy to OSSRH (staging -> release) with debug
         env:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
-        run: mvn $MAVEN_CLI_OPTS -P release deploy
+        run: |
+          mvn $MAVEN_CLI_OPTS -e -X \
+            -Dorg.slf4j.simpleLogger.log.org.sonatype.nexus.maven.staging=DEBUG \
+            -Dorg.apache.maven.plugins.help=DEBUG \
+            -P release deploy
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
