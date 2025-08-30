@@ -19,6 +19,18 @@ a standard, universal way according to accounting best practices and accounting 
 * VAT rate calculations (EU) and sales tax calculations (USA).
 * API integration support (swagger)
 
+## Use accountinglib as Maven dependency
+Add this to your pom.xml file to use the latest version of accountinglib
+
+```xml
+  <dependency>
+    <groupId>io.github.accountinglib</groupId>
+    <artifactId>accountinglib</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+  </dependency>
+```
+   
+
 ## Requirements
 Accountinglib requires Java 21.
 
