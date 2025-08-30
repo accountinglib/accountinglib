@@ -11,7 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up JDK
+      # Installs JDK, imports GPG key, and writes ~/.m2/settings.xml
+      # with <server id="ossrh"> credentials that match your POM
+      - name: Set up JDK + Maven settings + GPG
         uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -23,18 +25,27 @@ jobs:
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
-      - name: Sync POM version from tag (vX.Y.Z -> X.Y.Z)
+      # Ensure the POM version equals the tag (vX.Y.Z -> X.Y.Z)
+      - name: Sync POM version from tag
+        env:
+          VERSION: ${{ github.ref_name }}
         run: |
-          VERSION="${GITHUB_REF_NAME#v}"
-          mvn -B versions:set -DnewVersion="$VERSION"
-          mvn -B -q -DskipTests -P !gpg verify
+          VERSION="${VERSION#v}"
+          echo "Releasing version: $VERSION"
+          mvn -B versions:set -DnewVersion="$VERSION" -DgenerateBackupPoms=false
 
-      - name: Deploy to OSSRH (staging -> auto-release)
+      # Optional sanity build without signing (avoid accidental GPG at verify)
+      - name: Verify (no tests, no signing)
+        run: mvn -B -DskipTests -Dgpg.skip=true verify
+
+      # Real deploy: activates your 'release' profile
+      # which runs maven-gpg-plugin + nexus-staging (auto close/release)
+      - name: Deploy to OSSRH (staging -> release)
         env:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
-        run: mvn -B deploy -DskipTests=false
+        run: mvn -B -P release -DskipTests deploy
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
