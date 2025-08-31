@@ -11,6 +11,7 @@ a standard, universal way according to accounting best practices and accounting 
 * Accounting domain objects (Voucher, Invoice, Posting, OrderLines).
 * Supplier Invoices (incoming) and Invoices (outgoing).
 * SAF-T Standard Audit File for Tax https://en.wikipedia.org/wiki/SAF-T
+* Validation of SAF-T files
 * PDF document generation with OpenPDF  https://github.com/LibrePDF/OpenPDF/ or Pdfbox https://pdfbox.apache.org/
 * UBL (Universal Business Language) object support https://github.com/phax/ph-ubl
 * BigDecimal for number operations. Possibly using an adapter.
