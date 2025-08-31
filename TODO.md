@@ -7,7 +7,8 @@
 - [ ] `LedgerService` (post entry, trial balance)
 - [ ] Add some SAF-T files for initial ledger example data.
 - [ ] create some unit tests
-- [ ] decide on domain object mapping method 
+- [ ] decide on domain object mapping method
+- [ ] Validation of SAF-T files. Swing GUI?
 
 ## Formats & I/O
 - [ ] SAF-T: minimal exporter
