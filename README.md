@@ -24,6 +24,7 @@ a standard, universal way according to accounting best practices and accounting 
 [![](https://jitpack.io/v/accountinglib/accountinglib.svg)](https://jitpack.io/#accountinglib/accountinglib)
 ![CI](https://github.com/accountinglib/accountinglib/actions/workflows/maven.yml/badge.svg)
 [![License (LGPL version 2.1)](https://img.shields.io/badge/license-GNU%20LGPL%20version%202.1-blue.svg?style=flat-square)](http://opensource.org/licenses/LGPL-2.1)
+[![CodeQL](https://github.com/accountinglib/accountinglib/actions/workflows/codeql.yml/badge.svg)](https://github.com/accountinglib/accountinglib/actions/workflows/codeql.yml)
 
 ## Open source software 
 Accountinglib is open source software licensed under the LGPL, designed to promote openness, security, and trust in accounting systems. By making the code fully transparent and community-driven, it allows anyone to inspect, verify, and contribute improvements, ensuring that financial logic is reliable and not hidden behind closed, proprietary solutions. This openness strengthens security through peer review and builds long-term trust for customers and developers alike.
