@@ -2,4 +2,4 @@
 jdk:
   - openjdk21
 install:
-  - mvn -q -DskipTests -Dgpg.skip=true -Dmaven.javadoc.skip=true package
+  - mvn -q package
