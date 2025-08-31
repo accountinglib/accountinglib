@@ -79,3 +79,6 @@ See [Todo.md](TODO.md).
 ## License 
 GNU Lesser General Public License.
 
+## Idea approval:
+*Det høres ut som en strålende idé :star2:  Det blir spennende å se hva du får til :thumbsup:*
+
