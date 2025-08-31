@@ -19,10 +19,15 @@ a standard, universal way according to accounting best practices and accounting 
 * VAT rate calculations (EU) and sales tax calculations (USA).
 * API integration support (swagger)
 
+
+## Status
+[![](https://jitpack.io/v/accountinglib/accountinglib.svg)](https://jitpack.io/#accountinglib/accountinglib)
+![CI](https://github.com/accountinglib/accountinglib/actions/workflows/maven.yml/badge.svg)
+[![License (LGPL version 2.1)](https://img.shields.io/badge/license-GNU%20LGPL%20version%202.1-blue.svg?style=flat-square)](http://opensource.org/licenses/LGPL-2.1)
+
 ## Use accountinglib as Maven dependency
 
 accountinglib can be used as a Maven dependency. It is built and distrobuted using Jitpack.   
-[![](https://jitpack.io/v/accountinglib/accountinglib.svg)](https://jitpack.io/#accountinglib/accountinglib)
 
 1. Add Maven dependency to the pom.xml file:  
 ```xml
@@ -68,7 +73,3 @@ See [Todo.md](TODO.md).
 ## License 
 GNU Lesser General Public License.
 
-## Status
-[![](https://jitpack.io/v/accountinglib/accountinglib.svg)](https://jitpack.io/#accountinglib/accountinglib)
-![CI](https://github.com/accountinglib/accountinglib/actions/workflows/maven.yml/badge.svg)
-[![License (LGPL version 2.1)](https://img.shields.io/badge/license-GNU%20LGPL%20version%202.1-blue.svg?style=flat-square)](http://opensource.org/licenses/LGPL-2.1)
