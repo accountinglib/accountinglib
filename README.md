@@ -28,7 +28,7 @@ a standard, universal way according to accounting best practices and accounting 
 [![CodeQL](https://github.com/accountinglib/accountinglib/actions/workflows/codeql.yml/badge.svg)](https://github.com/accountinglib/accountinglib/actions/workflows/codeql.yml)
 
 ## Open source software 
-Accountinglib is open source software licensed under the LGPL, designed to promote openness, security, and trust in accounting systems. By making the code fully transparent and community-driven, it allows anyone to inspect, verify, and contribute improvements, ensuring that financial logic is reliable and not hidden behind closed, proprietary solutions. This openness strengthens security through peer review and builds long-term trust for customers and developers alike.
+Accountinglib is open source software licensed under the GNU Lesser General Public License (LGPL), designed to promote openness, security, and trust in accounting systems. By making the code fully transparent and community-driven, it allows anyone to inspect, verify, and contribute improvements, ensuring that financial logic is reliable and not hidden behind closed, proprietary solutions. This openness strengthens security through peer review and builds long-term trust for customers and developers alike.
 
 ## Security 
 Security and trust in using accountinglib is very important. See Security.md.
@@ -79,7 +79,7 @@ See [Todo.md](TODO.md).
 
 
 ## License 
-GNU Lesser General Public License.
+GNU Lesser General Public License. See [LICENSE](LICENSE).
 
 ## Idea approval:
 *Det høres ut som en strålende idé :star2:  Det blir spennende å se hva du får til :thumbsup:*
