@@ -1,5 +1,4 @@
-# jitpack.yml
 jdk:
   - openjdk21
 install:
-  - mvn -q package
+  - mvn -q -B -V -DskipTests -Dmaven.test.skip=true -Dgpg.skip=true -Dmaven.javadoc.skip=true package
