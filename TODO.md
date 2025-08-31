@@ -1,5 +1,7 @@
 # TODO — accountinglib
 
+- [ ] Validation of SAF-T files. Swing GUI?
+
 ## Core (v0.1)
 - [ ] Finalize base package (e.g., `org.accountinglib.*`)
 - [ ] Implement `Account`, `JournalEntry`, `Posting`, `Ledger`
@@ -8,7 +10,7 @@
 - [ ] Add some SAF-T files for initial ledger example data.
 - [ ] create some unit tests
 - [ ] decide on domain object mapping method
-- [ ] Validation of SAF-T files. Swing GUI?
+
 
 ## Formats & I/O
 - [ ] SAF-T: minimal exporter
