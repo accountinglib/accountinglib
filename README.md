@@ -27,7 +27,7 @@ a standard, universal way according to accounting best practices and accounting 
 
 ## Use accountinglib as Maven dependency
 
-accountinglib can be used as a Maven dependency. It is built and distrobuted using Jitpack.   
+accountinglib can be used as a Maven dependency. It is built and distributed using Jitpack.   
 
 1. Add Maven dependency to the pom.xml file:  
 ```xml
