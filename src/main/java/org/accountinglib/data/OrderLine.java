@@ -1,4 +1,4 @@
 package org.accountinglib.data;
 
-public class OrderLine {
+public record OrderLine() {
 }

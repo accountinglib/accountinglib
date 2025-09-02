@@ -1,4 +1,4 @@
 package org.accountinglib.data;
 
-public class Ledger {
+public record Ledger() {
 }
