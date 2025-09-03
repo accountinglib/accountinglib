@@ -19,6 +19,7 @@ a standard, universal way according to accounting best practices and accounting 
 * Currency rate conversions.
 * VAT rate calculations (EU) and sales tax calculations (USA).
 * API integration support (swagger)
+* SQLite database
 
 
 ## Status
