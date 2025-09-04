@@ -33,5 +33,7 @@
 - [ ] SPI for custom exporters/importers
 - [ ] Publish to Maven central
 
+- Jakarta EE and Spring support
+
 Use cases:
 - SAF-T export
