@@ -1,6 +1,7 @@
 # TODO — accountinglib
 
 - [ ] Validation of SAF-T files. Swing GUI?
+- [ ] New company dialog 
 
 ## Core (v0.1)
 - [ ] Finalize base package (e.g., `org.accountinglib.*`)
