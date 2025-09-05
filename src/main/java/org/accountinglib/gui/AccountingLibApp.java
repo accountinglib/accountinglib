@@ -36,8 +36,8 @@ public class AccountingLibApp extends JFrame {
         accountsPanel.updateAccountsTable();
     }
 
-    private void updateLedgerTable(Object[][] data) {
-        ledgerPanel.updateLedgerTable(data);
+    private void updateLedgerTable() {
+        ledgerPanel.updateLedgerTable(Context.getLedger());
     }
 
     private JComponent createContent() {
@@ -84,6 +84,7 @@ public class AccountingLibApp extends JFrame {
                         Context.setLedger(ledger);
 
                         updateAccountsTable();
+                        updateLedgerTable();
 
                         JOptionPane.showMessageDialog(AccountingLibApp.this, "SAF-T file imported successfully.", "Import", JOptionPane.INFORMATION_MESSAGE);
                     } catch (Exception ex) {
