@@ -1,19 +1,20 @@
 package org.accountinglib.gui;
 
+import org.accountinglib.data.AuditFile;
+import org.accountinglib.service.LedgerService;
+import org.accountinglib.saft.SAFTImport;
+
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AccountingLibApp extends JFrame {
 
-    private JTable ledgerTable;
     private DefaultTableModel ledgerTableModel;
-    private JLabel status;
-    private JTabbedPane tabs;
+    private final JTabbedPane tabs; // Declared the `tabs` variable as a class-level field to resolve the scope issue and marked it as final.
 
     public AccountingLibApp() {
         super("Accounting Library");
@@ -21,28 +22,30 @@ public class AccountingLibApp extends JFrame {
         setMinimumSize(new Dimension(1000, 650));
         setLocationRelativeTo(null);
 
+        tabs = new JTabbedPane(SwingConstants.LEFT); // Initialize tabs here
         setJMenuBar(createMenuBar());
         add(createContent(), BorderLayout.CENTER);
     }
 
     private JComponent createContent() {
-        tabs = new JTabbedPane(JTabbedPane.LEFT);
-        tabs.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
+        tabs.addChangeListener(e -> {
+            int selectedIndex = tabs.getSelectedIndex();
+            if (selectedIndex == 0) {
+                // Implement re-query logic via AccountingLib
+            }
+        });
 
         tabs.addTab("Ledger", createLedgerPanel());
         tabs.addTab("Accounts", createPlaceholderPanel("Accounts"));
         tabs.addTab("Reports", createPlaceholderPanel("Reports"));
         tabs.addTab("Settings", createPlaceholderPanel("Settings"));
+        tabs.addTab("SAF-T Import", createSAFTImportPanel()); // Added a new tab for SAF-T Import
 
-        status = new JLabel(" Ledger ready");
+        JLabel status = new JLabel(" Ledger ready");
         JPanel statusBar = new JPanel(new BorderLayout());
         statusBar.add(status, BorderLayout.WEST);
 
-        tabs.addChangeListener(new ChangeListener() {
-            @Override public void stateChanged(ChangeEvent e) {
-                status.setText(" " + tabs.getTitleAt(tabs.getSelectedIndex()) + " ready");
-            }
-        });
+        tabs.addChangeListener(e -> status.setText(" " + tabs.getTitleAt(tabs.getSelectedIndex()) + " ready"));
 
         JPanel root = new JPanel(new BorderLayout());
         root.add(tabs, BorderLayout.CENTER);
@@ -64,40 +67,38 @@ public class AccountingLibApp extends JFrame {
             }
         };
 
-        ledgerTable = new JTable(ledgerTableModel);
+        JTable ledgerTable = new JTable(ledgerTableModel);
         ledgerTable.setAutoCreateRowSorter(true);
         ledgerTable.setFillsViewportHeight(true);
         ledgerTable.setRowHeight(24);
 
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(ledgerTableModel);
-        ledgerTable.setRowSorter(sorter);
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.add(new JScrollPane(ledgerTable), BorderLayout.CENTER);
+        return panel;
+    }
+
+    private JPanel createSAFTImportPanel() {
+        JPanel panel = new JPanel(new BorderLayout());
 
         JToolBar toolbar = new JToolBar();
         toolbar.setFloatable(false);
-        toolbar.add(new JButton(new AbstractAction("Refresh") {
-            @Override public void actionPerformed(ActionEvent e) {
-                // TODO: re-query via AccountingLib
-                JOptionPane.showMessageDialog(AccountingLibApp.this, "Ledger refreshed.");
-            }
-        }));
-        toolbar.addSeparator();
-        toolbar.add(new JButton(new AbstractAction("Import…") {
+        toolbar.add(new JButton(new AbstractAction("Import SAF-T") {
             @Override public void actionPerformed(ActionEvent e) {
                 JFileChooser chooser = new JFileChooser();
                 if (chooser.showOpenDialog(AccountingLibApp.this) == JFileChooser.APPROVE_OPTION) {
-                    JOptionPane.showMessageDialog(AccountingLibApp.this,
-                            "Selected: " + chooser.getSelectedFile().getAbsolutePath(),
-                            "Import", JOptionPane.INFORMATION_MESSAGE);
-                    // TODO: load into ledgerTableModel via AccountingLib services
+                    String filePath = chooser.getSelectedFile().getAbsolutePath();
+                    SAFTImport saftImport = new SAFTImport();
+                    try {
+                        saftImport.importSAFT(filePath);
+                        JOptionPane.showMessageDialog(AccountingLibApp.this, "SAF-T file imported successfully.", "Import", JOptionPane.INFORMATION_MESSAGE);
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(AccountingLibApp.this, "Failed to import SAF-T file.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         }));
 
-        loadSampleLedgerData();
-
-        JPanel panel = new JPanel(new BorderLayout());
         panel.add(toolbar, BorderLayout.NORTH);
-        panel.add(new JScrollPane(ledgerTable), BorderLayout.CENTER);
         return panel;
     }
 
@@ -157,7 +158,7 @@ public class AccountingLibApp extends JFrame {
         JMenuItem aboutItem = new JMenuItem(new AbstractAction("About") {
             @Override public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(AccountingLibApp.this,
-                        "Accounting Library App (Ledger)\nGNU Lesser General Public License.",
+                        "Accounting Library App\nGNU Lesser General Public License.",
                         "About", JOptionPane.INFORMATION_MESSAGE);
             }
         });
@@ -170,18 +171,6 @@ public class AccountingLibApp extends JFrame {
         return menuBar;
     }
 
-    private void loadSampleLedgerData() {
-        Object[][] rows = new Object[][]{
-                {"2025-09-01", "3000 Sales", "Invoice #1001", 0.00, 12500.00},
-                {"2025-09-01", "1920 Bank", "Payment received", 12500.00, 0.00},
-                {"2025-09-02", "4000 Purchases", "Supplier bill", 5400.00, 0.00},
-                {"2025-09-03", "2700 VAT", "VAT settlement", 0.00, 1350.00}
-        };
-        for (Object[] r : rows) {
-            ledgerTableModel.addRow(r);
-        }
-    }
-
     public static void main(String[] args) {
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -190,7 +179,9 @@ public class AccountingLibApp extends JFrame {
                     break;
                 }
             }
-        } catch (Exception ignored) {}
+        } catch (Exception ex) {
+            Logger.getLogger(AccountingLibApp.class.getName()).log(Level.WARNING, "Failed to set look and feel", ex);
+        }
 
         SwingUtilities.invokeLater(() -> {
             AccountingLibApp app = new AccountingLibApp();
