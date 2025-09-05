@@ -1,13 +1,12 @@
 package org.accountinglib.gui;
 
-import org.accountinglib.data.AuditFile;
-import org.accountinglib.service.LedgerService;
 import org.accountinglib.saft.SAFTImport;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -89,7 +88,8 @@ public class AccountingLibApp extends JFrame {
                     String filePath = chooser.getSelectedFile().getAbsolutePath();
                     SAFTImport saftImport = new SAFTImport();
                     try {
-                        saftImport.importSAFT(filePath);
+                        File file = new File(filePath);
+                        saftImport.parseAuditFile(file);
                         JOptionPane.showMessageDialog(AccountingLibApp.this, "SAF-T file imported successfully.", "Import", JOptionPane.INFORMATION_MESSAGE);
                     } catch (Exception ex) {
                         JOptionPane.showMessageDialog(AccountingLibApp.this, "Failed to import SAF-T file.", "Error", JOptionPane.ERROR_MESSAGE);

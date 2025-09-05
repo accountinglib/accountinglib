@@ -1,37 +1,47 @@
 package org.accountinglib.saft;
 
-import org.accountinglib.data.AuditFile;
-import org.accountinglib.data.Voucher;
-import org.accountinglib.data.Posting;
-import org.accountinglib.data.Account;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.Unmarshaller;
+import org.accountinglib.data.Company;
+import org.accountinglib.data.Ledger;
 
-import java.util.Scanner;
-import java.io.File;
-import java.io.FileNotFoundException;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamReader;
+import java.io.*;
+import java.nio.file.Files;
 
 public class SAFTImport {
 
-    public AuditFile importSAFT(String filePath) {
-        AuditFile auditFile = new AuditFile();
-        try (Scanner scanner = new Scanner(new File(filePath))) {
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                // Example parsing logic (to be replaced with actual SAF-T parsing)
-                if (line.startsWith("Account")) {
-                    //Account account = new Account();
-                    // Populate account fields from the line
+    public static AuditFile parseAuditFile(File file) throws Exception {
 
-                } else if (line.startsWith("Voucher")) {
-                    //Voucher voucher = new Voucher();
-                    // Populate voucher fields from the line
+            byte[] xmlContent = Files.readAllBytes(file.toPath());
 
-                } else if (line.startsWith("Posting")) {
+            jakarta.xml.bind.JAXBContext context = JAXBContext.newInstance(AuditFile.class);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+            InputStream stream = new ByteArrayInputStream(xmlContent);
+            XMLInputFactory xif = XMLInputFactory.newFactory();
+            xif.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, false);
+            xif.setProperty(XMLInputFactory.SUPPORT_DTD, false);
+            XMLStreamReader xmlStream = xif.createXMLStreamReader(stream);
+            return (AuditFile) unmarshaller.unmarshal(xmlStream);
 
-                }
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return auditFile;
     }
+
+    public static Ledger importSAFT(File file) {
+
+        try {
+            AuditFile auditFile = parseAuditFile(file);
+
+            Ledger ledger = new Ledger();
+            Company company = new Company(auditFile.getHeader().getCompany().getName(), auditFile.getHeader().getCompany().getRegistrationNumber(),  false, false);
+            ledger.setCompany(company);
+
+
+            return ledger;
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

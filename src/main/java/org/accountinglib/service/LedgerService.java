@@ -1,13 +1,11 @@
 package org.accountinglib.service;
 
 import javax.swing.table.DefaultTableModel;
-import org.accountinglib.data.AuditFile;
-import org.accountinglib.data.Voucher;
-import org.accountinglib.data.Posting;
+import org.accountinglib.data.Ledger;
 
 public class LedgerService {
 
-    public void loadLedgerData(AuditFile auditFile, DefaultTableModel tableModel) {
+    public void loadLedgerData(Ledger ledger, DefaultTableModel tableModel) {
         tableModel.setRowCount(0); // Clear existing data
         /*auditFile.getVouchers().values().forEach(voucher -> {
             for (Posting posting : voucher.getPostings()) {
