@@ -1,5 +1,7 @@
 package org.accountinglib.gui;
 
+import org.accountinglib.data.Context;
+import org.accountinglib.data.Ledger;
 import org.accountinglib.saft.SAFTImport;
 
 import javax.swing.*;
@@ -12,8 +14,9 @@ import java.util.logging.Logger;
 
 public class AccountingLibApp extends JFrame {
 
+    private Context context = new Context();
     private DefaultTableModel ledgerTableModel;
-    private final JTabbedPane tabs; // Declared the `tabs` variable as a class-level field to resolve the scope issue and marked it as final.
+    private final JTabbedPane tabs;
 
     public AccountingLibApp() {
         super("Accounting Library");
@@ -86,10 +89,11 @@ public class AccountingLibApp extends JFrame {
                 JFileChooser chooser = new JFileChooser();
                 if (chooser.showOpenDialog(AccountingLibApp.this) == JFileChooser.APPROVE_OPTION) {
                     String filePath = chooser.getSelectedFile().getAbsolutePath();
-                    SAFTImport saftImport = new SAFTImport();
                     try {
                         File file = new File(filePath);
-                        saftImport.parseAuditFile(file);
+                        Ledger ledger = SAFTImport.importSAFT(file);
+                        Context.setLedger(ledger);
+
                         JOptionPane.showMessageDialog(AccountingLibApp.this, "SAF-T file imported successfully.", "Import", JOptionPane.INFORMATION_MESSAGE);
                     } catch (Exception ex) {
                         JOptionPane.showMessageDialog(AccountingLibApp.this, "Failed to import SAF-T file.", "Error", JOptionPane.ERROR_MESSAGE);
