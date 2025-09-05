@@ -6,7 +6,7 @@ import java.util.Map;
 public class Ledger {
 
     private Company company;
-    private Map<Long, Account> accounts = new HashMap<>();
+    private Map<String, Account> accounts = new HashMap<>();
     private Map<Long, Company> customers = new HashMap<>();
     private Map<Long, Company> suppliers = new HashMap<>();
     private Map<Long, Posting> postings = new HashMap<>();
@@ -22,11 +22,11 @@ public class Ledger {
         this.company = company;
     }
 
-    public Map<Long, Account> getAccounts() {
+    public Map<String, Account> getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(Map<Long, Account> accounts) {
+    public void setAccounts(Map<String, Account> accounts) {
         this.accounts = accounts;
     }
 

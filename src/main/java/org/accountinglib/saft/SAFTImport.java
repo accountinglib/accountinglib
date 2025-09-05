@@ -2,13 +2,15 @@ package org.accountinglib.saft;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Unmarshaller;
-import org.accountinglib.data.Company;
-import org.accountinglib.data.Ledger;
+import org.accountinglib.data.*;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamReader;
 import java.io.*;
+import java.math.BigDecimal;
 import java.nio.file.Files;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SAFTImport {
 
@@ -36,6 +38,27 @@ public class SAFTImport {
             Company company = new Company(auditFile.getHeader().getCompany().getName(), auditFile.getHeader().getCompany().getRegistrationNumber(),  false, false);
             ledger.setCompany(company);
 
+
+            for (AuditFile.MasterFiles.GeneralLedgerAccounts.Account account : auditFile.getMasterFiles().getGeneralLedgerAccounts().getAccount()) {
+                Account a = new Account(account.getAccountID(), account.getAccountDescription(), new Currency("NOK", "NOK"));
+                ledger.getAccounts().put(account.getAccountID(), a);
+            }
+
+
+            for (AuditFile.GeneralLedgerEntries.Journal journal : auditFile.getGeneralLedgerEntries().journal) {
+                for (AuditFile.GeneralLedgerEntries.Journal.Transaction transaction : journal.getTransaction()) {
+                    Voucher v = new Voucher();
+                    v.setId(Long.parseLong(transaction.getTransactionID()));
+                    for (AuditFile.GeneralLedgerEntries.Journal.Transaction.Line line : transaction.getLine()) {
+                        Posting posting = new Posting(Long.parseLong(line.getRecordID()), null, null,
+                                line.getCreditAmount() != null ? line.getCreditAmount().getAmount() : BigDecimal.ZERO,
+                                line.getDebitAmount() != null ? line.getDebitAmount().getAmount() : BigDecimal.ZERO,
+                                line.getDescription());
+                        v.getPostings().put(Long.parseLong(line.getRecordID()), posting);
+                    }
+                    ledger.getVouchers().put(v.getId(), v);
+                }
+            }
 
             return ledger;
 
