@@ -120,17 +120,6 @@ public class AccountingLibApp extends JFrame {
         JMenu fileMenu = new JMenu("File");
         fileMenu.setMnemonic('F');
 
-        JMenuItem openItem = new JMenuItem(new AbstractAction("Open…") {
-            @Override public void actionPerformed(ActionEvent e) {
-                JFileChooser chooser = new JFileChooser();
-                if (chooser.showOpenDialog(AccountingLibApp.this) == JFileChooser.APPROVE_OPTION) {
-                    JOptionPane.showMessageDialog(AccountingLibApp.this,
-                            "Selected: " + chooser.getSelectedFile().getAbsolutePath(),
-                            "Open", JOptionPane.INFORMATION_MESSAGE);
-                }
-            }
-        });
-
         JMenuItem exitItem = new JMenuItem(new AbstractAction("Exit") {
             @Override public void actionPerformed(ActionEvent e) {
                 dispose();
@@ -138,7 +127,6 @@ public class AccountingLibApp extends JFrame {
         });
         exitItem.setAccelerator(KeyStroke.getKeyStroke("control Q"));
 
-        fileMenu.add(openItem);
         fileMenu.addSeparator();
         fileMenu.add(exitItem);
 
