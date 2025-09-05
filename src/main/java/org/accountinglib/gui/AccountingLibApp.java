@@ -18,6 +18,7 @@ public class AccountingLibApp extends JFrame {
     private DefaultTableModel ledgerTableModel;
     private final JTabbedPane tabs;
     private DefaultTableModel accountsTableModel;
+    private AccountsPanel accountsPanel;
 
     public AccountingLibApp() {
         super("Accounting Library");
@@ -30,45 +31,8 @@ public class AccountingLibApp extends JFrame {
         add(createContent(), BorderLayout.CENTER);
     }
 
-    private JPanel createAccountsPanel() {
-         accountsTableModel = new DefaultTableModel(
-                new Object[]{"Account ID", "Name", "Type", "Balance"}, 0) {
-            @Override public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-            @Override public Class<?> getColumnClass(int columnIndex) {
-                return switch (columnIndex) {
-                    case 3 -> Double.class;
-                    default -> String.class;
-                };
-            }
-        };
-
-        JTable accountsTable = new JTable(accountsTableModel);
-        accountsTable.setAutoCreateRowSorter(true);
-        accountsTable.setFillsViewportHeight(true);
-        accountsTable.setRowHeight(24);
-
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.add(new JScrollPane(accountsTable), BorderLayout.CENTER);
-
-        return panel;
-    }
-
     private void updateAccountsTable() {
-
-        if (accountsTableModel != null) {
-            accountsTableModel.setRowCount(0); // Clear existing rows
-            Ledger ledger = Context.getLedger();
-            if (ledger != null) {
-                ledger.getAccounts().forEach((key, account) -> {
-                    accountsTableModel.addRow(new Object[]{
-                            account.number(),
-                            account.name()
-                    });
-                });
-            }
-        }
+        accountsPanel.updateAccountsTable();
     }
 
     private JComponent createContent() {
@@ -80,7 +44,8 @@ public class AccountingLibApp extends JFrame {
         });
 
         tabs.addTab("Ledger", createLedgerPanel());
-        tabs.addTab("Accounts", createAccountsPanel());
+        accountsPanel = new AccountsPanel();
+        tabs.addTab("Accounts", accountsPanel);
         tabs.addTab("Reports", createPlaceholderPanel("Reports"));
         tabs.addTab("Settings", createPlaceholderPanel("Settings"));
         tabs.addTab("SAF-T Import", createSAFTImportPanel()); // Added a new tab for SAF-T Import
