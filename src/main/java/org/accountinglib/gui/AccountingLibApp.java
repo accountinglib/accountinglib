@@ -19,6 +19,7 @@ public class AccountingLibApp extends JFrame {
     private final JTabbedPane tabs;
     private DefaultTableModel accountsTableModel;
     private AccountsPanel accountsPanel;
+    private LedgerPanel ledgerPanel;
 
     public AccountingLibApp() {
         super("Accounting Library");
@@ -35,6 +36,10 @@ public class AccountingLibApp extends JFrame {
         accountsPanel.updateAccountsTable();
     }
 
+    private void updateLedgerTable(Object[][] data) {
+        ledgerPanel.updateLedgerTable(data);
+    }
+
     private JComponent createContent() {
         tabs.addChangeListener(e -> {
             int selectedIndex = tabs.getSelectedIndex();
@@ -43,7 +48,8 @@ public class AccountingLibApp extends JFrame {
             }
         });
 
-        tabs.addTab("Ledger", createLedgerPanel());
+        ledgerPanel = new LedgerPanel();
+        tabs.addTab("Ledger", ledgerPanel);
         accountsPanel = new AccountsPanel();
         tabs.addTab("Accounts", accountsPanel);
         tabs.addTab("Reports", createPlaceholderPanel("Reports"));
@@ -60,30 +66,6 @@ public class AccountingLibApp extends JFrame {
         root.add(tabs, BorderLayout.CENTER);
         root.add(statusBar, BorderLayout.SOUTH);
         return root;
-    }
-
-    private JPanel createLedgerPanel() {
-        ledgerTableModel = new DefaultTableModel(
-                new Object[]{"Date", "Account", "Description", "Debit", "Credit"}, 0) {
-            @Override public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-            @Override public Class<?> getColumnClass(int columnIndex) {
-                return switch (columnIndex) {
-                    case 3, 4 -> Double.class;
-                    default -> String.class;
-                };
-            }
-        };
-
-        JTable ledgerTable = new JTable(ledgerTableModel);
-        ledgerTable.setAutoCreateRowSorter(true);
-        ledgerTable.setFillsViewportHeight(true);
-        ledgerTable.setRowHeight(24);
-
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.add(new JScrollPane(ledgerTable), BorderLayout.CENTER);
-        return panel;
     }
 
     private JPanel createSAFTImportPanel() {
