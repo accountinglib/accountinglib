@@ -1,9 +1,14 @@
 package org.accountinglib.data;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  */
-public record Voucher() {
+public class Voucher {
+
+    private Map<Long, Posting> postings = new HashMap<>();
 
 
 }

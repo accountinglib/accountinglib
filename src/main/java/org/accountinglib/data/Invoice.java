@@ -1,4 +1,13 @@
 package org.accountinglib.data;
 
-public record Invoice() {
+import java.util.HashMap;
+import java.util.Map;
+
+public class Invoice {
+
+    private boolean isSupplierInvoice;
+    private String invoiceNumber;
+
+    private Map<Long, OrderLine> orderlines = new HashMap<>();
+
 }

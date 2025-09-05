@@ -1,4 +1,4 @@
 package org.accountinglib.data;
 
-public record Customer() {
+public class Document {
 }

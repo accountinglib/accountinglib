@@ -1,4 +1,11 @@
 package org.accountinglib.data;
 
-public record OrderLine() {
+import java.math.BigDecimal;
+
+public record OrderLine(Currency currency,
+                        BigDecimal amount,
+                        String description) {
+
+
+
 }

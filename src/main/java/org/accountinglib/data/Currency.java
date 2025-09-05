@@ -1,4 +1,8 @@
 package org.accountinglib.data;
 
-public record Currency() {
+public record Currency(
+        String code,
+        String name) {
+
+
 }
