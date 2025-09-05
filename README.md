@@ -20,6 +20,7 @@ a standard, universal way according to accounting best practices and accounting 
 * VAT rate calculations (EU) and sales tax calculations (USA).
 * API integration support (swagger)
 * SQLite database
+* Java Swing GUI for creating and updating accounting data and reports.
 
 
 ## Status
