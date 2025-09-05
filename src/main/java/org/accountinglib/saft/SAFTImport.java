@@ -49,8 +49,9 @@ public class SAFTImport {
                 for (AuditFile.GeneralLedgerEntries.Journal.Transaction transaction : journal.getTransaction()) {
                     Voucher v = new Voucher();
                     v.setId(Long.parseLong(transaction.getTransactionID()));
+                    v.setDate(transaction.getTransactionDate().toGregorianCalendar().toZonedDateTime().toLocalDate());
                     for (AuditFile.GeneralLedgerEntries.Journal.Transaction.Line line : transaction.getLine()) {
-                        Posting posting = new Posting(Long.parseLong(line.getRecordID()), null, null,
+                        Posting posting = new Posting(Long.parseLong(line.getRecordID()), null, line.getValueDate().toGregorianCalendar().toZonedDateTime().toLocalDate(), null,
                                 line.getCreditAmount() != null ? line.getCreditAmount().getAmount() : BigDecimal.ZERO,
                                 line.getDebitAmount() != null ? line.getDebitAmount().getAmount() : BigDecimal.ZERO,
                                 line.getDescription());
