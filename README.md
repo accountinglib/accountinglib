@@ -6,7 +6,7 @@ transparent, and trustworthy across systems.
 Intended for use in accounting systems to ensure that accounting is performed in 
 a standard, universal way according to accounting best practices and accounting standards.  
 
-Accountinglib gives companies the freedom to own and maintain their accounting ledgers themselves, since the software is open source and the accounting data can be stored in a preferred way.
+Accountinglib gives companies the freedom to own and maintain their accounting ledgers themselves, since the software is open source and the accounting data can be stored in a preferred database.
 
 ## Features
 * Double entry accounting system core.
