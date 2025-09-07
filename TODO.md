@@ -5,6 +5,7 @@
 - [ ] Improve new voucher dialog
 - [ ] storage to DB.
 - [ ] SAF-T export.
+- [ ] New invoice 
 
 ## Core (v0.1)
 - [ ] Finalize base package (e.g., `org.accountinglib.*`)
