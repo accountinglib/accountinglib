@@ -5,7 +5,8 @@
 - [ ] Improve new voucher dialog
 - [ ] storage to DB.
 - [ ] SAF-T export.
-- [ ] New invoice 
+- [ ] New invoice
+- [ ] Hibernate? SQLite?
 
 ## Core (v0.1)
 - [ ] Finalize base package (e.g., `org.accountinglib.*`)
