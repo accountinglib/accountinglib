@@ -1,5 +1,6 @@
 package org.accountinglib.gui;
 
+import org.accountinglib.data.AccountingCompany;
 import org.accountinglib.data.Context;
 import org.accountinglib.data.Ledger;
 import org.accountinglib.saft.SAFTImport;
@@ -120,6 +121,9 @@ public class AccountingLibApp extends JFrame {
                     // You can add logic here to use the new company, e.g., set in context, update UI, etc.
                     // For now, just show a confirmation dialog.
                     JOptionPane.showMessageDialog(AccountingLibApp.this, "Company created: " + dialog.getCompany().name(), "New Company", JOptionPane.INFORMATION_MESSAGE);
+
+                    AccountingCompany accountingCompany = new AccountingCompany(dialog.getCompany(), null);
+                    Context.setAccountingCompany(accountingCompany);
                 }
             }
         });

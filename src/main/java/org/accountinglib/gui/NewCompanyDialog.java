@@ -20,7 +20,7 @@ public class NewCompanyDialog extends JDialog {
         add(introLabel, BorderLayout.NORTH);
 
         JPanel inputPanel = new JPanel(new GridLayout(2, 2, 10, 10));
-        inputPanel.setBorder(BorderFactory.createTitledBorder("Please enter the company information:"));
+        inputPanel.setBorder(BorderFactory.createTitledBorder("Company information:"));
         inputPanel.add(new JLabel("Company Name:"));
         nameField = new JTextField();
         inputPanel.add(nameField);
