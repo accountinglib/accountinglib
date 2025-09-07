@@ -3,14 +3,13 @@ package org.accountinglib.data;
 public class Context {
 
     static AccountingCompany accountingCompany;
-    static Ledger ledger = new Ledger();
 
     public static Ledger getLedger() {
-        return ledger;
+        return accountingCompany.getLedger();
     }
 
     public static void setLedger(Ledger l) {
-        ledger = l;
+        accountingCompany.setLedger(l);
     }
 
     public static AccountingCompany getAccountingCompany() {

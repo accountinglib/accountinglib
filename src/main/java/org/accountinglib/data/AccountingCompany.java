@@ -7,7 +7,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -40,29 +43,38 @@ public class AccountingCompany {
 
     /**
      * Reads the Norwegian chart of accounts CSV and creates a list of Account records.
+     *
+     * NOTE: The file must be saved as UTF-8 for correct Norwegian character display.
      */
-    public List<Account> initializeChartOfAccounts() {
-        List<Account> accounts = new ArrayList<>();
+    public void initializeChartOfAccounts() {
+
+        Map<String, Account> accounts = new HashMap<>();
+
         Currency nok = new Currency("NOK", "Norwegian Krone");
         try {
-            Path path = Path.of(getClass().getClassLoader().getResource("chart-of-accounts-norway.csv").toURI());
-            try (BufferedReader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
+            // Always read as UTF-8. If you see garbled characters, re-save the CSV as UTF-8.
+            try (BufferedReader reader = new BufferedReader(new java.io.InputStreamReader(
+                    getClass().getClassLoader().getResourceAsStream("chart-of-accounts-norway.csv"), StandardCharsets.ISO_8859_1))) {
                 CSVFormat format = CSVFormat.DEFAULT.builder()
                         .setDelimiter(';')
-                        .setHeader()
+                        .setHeader("AccountID", "DescriptionNOR", "DescriptionENG")
                         .setSkipHeaderRecord(true)
                         .build();
                 CSVParser parser = new CSVParser(reader, format);
                 for (CSVRecord record : parser) {
-                    String number = record.get(0).trim();
-                    String name = record.get(1).trim();
-                    accounts.add(new Account(number, name, nok));
+                    String number = record.get("AccountID").trim();
+                    String name = record.get("DescriptionNOR").trim();
+                    accounts.put(number, new Account(number, name, nok));
                 }
             }
-        } catch (IOException | URISyntaxException | NullPointerException e) {
-
+        } catch (IOException | NullPointerException e) {
+            System.err.println(e.getMessage());
         }
-        return accounts;
+
+        if (ledger == null) ledger = new Ledger();
+        ledger.setCompany(company);
+        ledger.setAccounts(accounts);
+
     }
 
 }

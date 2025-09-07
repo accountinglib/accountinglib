@@ -44,6 +44,9 @@ public class AccountingLibApp extends JFrame {
     private JComponent createContent() {
         tabs.addChangeListener(e -> {
             int selectedIndex = tabs.getSelectedIndex();
+            if (selectedIndex == 1) { // Accounts tab
+                updateAccountsTable();
+            }
             if (selectedIndex == 0) {
                 // Implement re-query logic via AccountingLib
             }
@@ -122,7 +125,7 @@ public class AccountingLibApp extends JFrame {
                     // For now, just show a confirmation dialog.
                     JOptionPane.showMessageDialog(AccountingLibApp.this, "Company created: " + dialog.getCompany().name(), "New Company", JOptionPane.INFORMATION_MESSAGE);
 
-                    AccountingCompany accountingCompany = new AccountingCompany(dialog.getCompany(), null);
+                    AccountingCompany accountingCompany = new AccountingCompany(dialog.getCompany(), new Ledger());
                     accountingCompany.initializeChartOfAccounts();
                     Context.setAccountingCompany(accountingCompany);
                 }
