@@ -123,6 +123,7 @@ public class AccountingLibApp extends JFrame {
                     JOptionPane.showMessageDialog(AccountingLibApp.this, "Company created: " + dialog.getCompany().name(), "New Company", JOptionPane.INFORMATION_MESSAGE);
 
                     AccountingCompany accountingCompany = new AccountingCompany(dialog.getCompany(), null);
+                    accountingCompany.initializeChartOfAccounts();
                     Context.setAccountingCompany(accountingCompany);
                 }
             }
