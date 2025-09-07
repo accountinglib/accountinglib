@@ -4,7 +4,8 @@ The Accounting Library (accountinglib) is an open source library for accounting 
 The goal is to provide an open, standards-based accounting toolkit that makes financial data verifiable,
 transparent, and trustworthy across systems.
 Intended for use in accounting systems to ensure that accounting is performed in 
-a standard, universal way according to accounting best practices and accounting standards.
+a standard, universal way according to accounting best practices and accounting standards.  
+
 Accountinglib gives companies the freedom to own and maintain their accounting ledgers themselves, since the software is open source and the accounting data can be stored in a preferred way.
 
 ## Features
