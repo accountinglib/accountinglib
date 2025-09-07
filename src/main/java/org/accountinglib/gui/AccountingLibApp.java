@@ -91,6 +91,8 @@ public class AccountingLibApp extends JFrame {
                     try {
                         File file = new File(filePath);
                         Ledger ledger = SAFTImport.importSAFT(file);
+                        AccountingCompany accountingCompany = new AccountingCompany(ledger.getCompany(), ledger);
+                        Context.setAccountingCompany(accountingCompany);
                         Context.setLedger(ledger);
 
                         updateAccountsTable();
@@ -98,7 +100,7 @@ public class AccountingLibApp extends JFrame {
 
                         JOptionPane.showMessageDialog(AccountingLibApp.this, "SAF-T file imported successfully.", "Import", JOptionPane.INFORMATION_MESSAGE);
                     } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(AccountingLibApp.this, "Failed to import SAF-T file.", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(AccountingLibApp.this, "Failed to import SAF-T file: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
