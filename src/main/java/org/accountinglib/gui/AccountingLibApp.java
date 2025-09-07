@@ -20,6 +20,7 @@ public class AccountingLibApp extends JFrame {
     private final JTabbedPane tabs;
     private DefaultTableModel accountsTableModel;
     private AccountsPanel accountsPanel;
+    private NewVoucherPanel voucherPanel;
     private LedgerPanel ledgerPanel;
 
     public AccountingLibApp() {
@@ -47,6 +48,9 @@ public class AccountingLibApp extends JFrame {
             if (selectedIndex == 1) { // Accounts tab
                 updateAccountsTable();
             }
+            if (selectedIndex == 2) {
+                voucherPanel.updateNewVoucerPanel();
+            }
             if (selectedIndex == 0) {
                 // Implement re-query logic via AccountingLib
             }
@@ -56,6 +60,8 @@ public class AccountingLibApp extends JFrame {
         tabs.addTab("Ledger", ledgerPanel);
         accountsPanel = new AccountsPanel();
         tabs.addTab("Accounts", accountsPanel);
+        voucherPanel = new NewVoucherPanel(this);
+        tabs.addTab("New Voucher", voucherPanel);
         tabs.addTab("Reports", createPlaceholderPanel("Reports"));
         tabs.addTab("Settings", createPlaceholderPanel("Settings"));
         tabs.addTab("SAF-T Import", createSAFTImportPanel()); // Added a new tab for SAF-T Import
