@@ -10,6 +10,8 @@ public record Posting(
         Currency currency,
         BigDecimal creditAmount,
         BigDecimal debitAmount,
-        String description
+        String description,
+        Employee employee,
+        Project project
 ) {
 }

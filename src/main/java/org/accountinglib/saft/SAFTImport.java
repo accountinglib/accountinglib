@@ -9,8 +9,7 @@ import javax.xml.stream.XMLStreamReader;
 import java.io.*;
 import java.math.BigDecimal;
 import java.nio.file.Files;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class SAFTImport {
 
@@ -54,7 +53,7 @@ public class SAFTImport {
                         Posting posting = new Posting(Long.parseLong(line.getRecordID()), null, line.getValueDate().toGregorianCalendar().toZonedDateTime().toLocalDate(), null,
                                 line.getCreditAmount() != null ? line.getCreditAmount().getAmount() : BigDecimal.ZERO,
                                 line.getDebitAmount() != null ? line.getDebitAmount().getAmount() : BigDecimal.ZERO,
-                                line.getDescription());
+                                line.getDescription(), null, null);
                         v.getPostings().put(Long.parseLong(line.getRecordID()), posting);
                     }
                     ledger.getVouchers().put(v.getId(), v);

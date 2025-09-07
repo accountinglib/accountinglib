@@ -112,6 +112,19 @@ public class AccountingLibApp extends JFrame {
         JMenu fileMenu = new JMenu("File");
         fileMenu.setMnemonic('F');
 
+        JMenuItem newCompanyItem = new JMenuItem(new AbstractAction("New company") {
+            @Override public void actionPerformed(ActionEvent e) {
+                NewCompanyDialog dialog = new NewCompanyDialog(AccountingLibApp.this);
+                dialog.setVisible(true);
+                if (dialog.isConfirmed()) {
+                    // You can add logic here to use the new company, e.g., set in context, update UI, etc.
+                    // For now, just show a confirmation dialog.
+                    JOptionPane.showMessageDialog(AccountingLibApp.this, "Company created: " + dialog.getCompany().name(), "New Company", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        });
+        fileMenu.add(newCompanyItem);
+
         JMenuItem exitItem = new JMenuItem(new AbstractAction("Exit") {
             @Override public void actionPerformed(ActionEvent e) {
                 dispose();
