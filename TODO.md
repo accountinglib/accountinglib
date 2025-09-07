@@ -1,8 +1,10 @@
 # TODO — accountinglib
 
 - [ ] Validation of SAF-T files. Swing GUI?
-- [ ] New company dialog
-- [ ] Initial chart of accounts 
+- [ ] Improve new company dialog
+- [ ] Improve new voucher dialog
+- [ ] storage to DB.
+- [ ] SAF-T export.
 
 ## Core (v0.1)
 - [ ] Finalize base package (e.g., `org.accountinglib.*`)
