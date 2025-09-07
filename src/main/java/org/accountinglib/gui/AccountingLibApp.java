@@ -22,6 +22,7 @@ public class AccountingLibApp extends JFrame {
     private AccountsPanel accountsPanel;
     private NewVoucherPanel voucherPanel;
     private LedgerPanel ledgerPanel;
+    private CompanyInformationPanel companyInfoPanel;
 
     public AccountingLibApp() {
         super("Accounting Library");
@@ -45,17 +46,22 @@ public class AccountingLibApp extends JFrame {
     private JComponent createContent() {
         tabs.addChangeListener(e -> {
             int selectedIndex = tabs.getSelectedIndex();
-            if (selectedIndex == 1) { // Accounts tab
+            if (selectedIndex == 2) { // Accounts tab
                 updateAccountsTable();
             }
-            if (selectedIndex == 2) {
+            if (selectedIndex == 3) {
                 voucherPanel.updateNewVoucerPanel();
             }
-            if (selectedIndex == 0) {
+            if (selectedIndex == 0) { // Company information tab
+                companyInfoPanel.updateInfo();
+            }
+            if (selectedIndex == 1) {
                 // Implement re-query logic via AccountingLib
             }
         });
 
+        companyInfoPanel = new CompanyInformationPanel();
+        tabs.addTab("Company information", companyInfoPanel);
         ledgerPanel = new LedgerPanel();
         tabs.addTab("Ledger", ledgerPanel);
         accountsPanel = new AccountsPanel();
@@ -78,6 +84,10 @@ public class AccountingLibApp extends JFrame {
         return root;
     }
 
+    private JPanel createCompanyInfoPanel() {
+        return companyInfoPanel;
+    }
+
     private JPanel createSAFTImportPanel() {
         JPanel panel = new JPanel(new BorderLayout());
 
@@ -97,6 +107,7 @@ public class AccountingLibApp extends JFrame {
 
                         updateAccountsTable();
                         updateLedgerTable();
+                        companyInfoPanel.updateInfo();
 
                         JOptionPane.showMessageDialog(AccountingLibApp.this, "SAF-T file imported successfully.", "Import", JOptionPane.INFORMATION_MESSAGE);
                     } catch (Exception ex) {
@@ -129,13 +140,12 @@ public class AccountingLibApp extends JFrame {
                 NewCompanyDialog dialog = new NewCompanyDialog(AccountingLibApp.this);
                 dialog.setVisible(true);
                 if (dialog.isConfirmed()) {
-                    // You can add logic here to use the new company, e.g., set in context, update UI, etc.
-                    // For now, just show a confirmation dialog.
                     JOptionPane.showMessageDialog(AccountingLibApp.this, "Company created: " + dialog.getCompany().name(), "New Company", JOptionPane.INFORMATION_MESSAGE);
 
                     AccountingCompany accountingCompany = new AccountingCompany(dialog.getCompany(), new Ledger());
                     accountingCompany.initializeChartOfAccounts();
                     Context.setAccountingCompany(accountingCompany);
+                    companyInfoPanel.updateInfo();
                 }
             }
         });
