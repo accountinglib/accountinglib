@@ -44,7 +44,9 @@ public class AccountingCompany {
     /**
      * Reads the Norwegian chart of accounts CSV and creates a list of Account records.
      *
-     * NOTE: The file must be saved as UTF-8 for correct Norwegian character display.
+     * NOTE: The file must be saved as ISO_8859_1 for correct Norwegian character display.
+     *
+     * TODO: move to Account service class.
      */
     public void initializeChartOfAccounts() {
 
