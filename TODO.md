@@ -8,6 +8,10 @@
 - [ ] New invoice
 - [ ] Hibernate? SQLite?
 
+# International 
+- Factur-x for .fr
+- Xrechnung for .de
+
 ## Core (v0.1)
 - [ ] Finalize base package (e.g., `org.accountinglib.*`)
 - [ ] Implement `Account`, `JournalEntry`, `Posting`, `Ledger`
