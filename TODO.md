@@ -47,3 +47,4 @@
 
 Use cases:
 - SAF-T export
+- Accountinglib for accounting, external system for invoicing EHF.
