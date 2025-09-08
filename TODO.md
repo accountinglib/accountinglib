@@ -12,6 +12,9 @@
 - Factur-x for .fr
 - Xrechnung for .de
 
+# accountinglib for auditors
+- [ ] auditor use cases
+
 ## Core (v0.1)
 - [ ] Finalize base package (e.g., `org.accountinglib.*`)
 - [ ] Implement `Account`, `JournalEntry`, `Posting`, `Ledger`
