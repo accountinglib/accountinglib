@@ -33,7 +33,6 @@
 
     <modules>
       <module>accountinglib</module>
-      <module>data-common-norway</module>  
   </modules>
 
     <properties>
