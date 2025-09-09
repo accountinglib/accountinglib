@@ -62,7 +62,7 @@ accountinglib can be used as a Maven dependency. It is built and distributed usi
 ```
 
 ## AccountingLibApp
-[AccountingLibApp](https://github.com/accountinglib/accountinglib/blob/main/accountinglib/src/main/java/org/accountinglib/gui/AccountingLibApp.java) is a Swing GUI app for managing accounting ledger and inspecting SAF-T files.
+[AccountingLibApp](https://github.com/accountinglib/accountinglib/blob/main/accountinglib/src/main/java/org/accountinglib/gui/README.md) is a Swing GUI app for managing accounting ledger and inspecting SAF-T files.
 
 ## Requirements
 Accountinglib requires Java 21.
