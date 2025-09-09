@@ -85,7 +85,7 @@ It implements a validated ledger system, with SAF-T format, and basic UBL invoic
 
 Accountinglib gives companies the freedom to own and maintain their accounting ledgers themselves, since the software is open source and the accounting data can be stored in a preferred database.
 
-AccountingLib/ AccountingApp is not a replacement for a commercial ERP system such as SAP. Still the goal for Accountinglib is to be a useful toolkit which can be used as a library in a commercial accounting system.
+AccountingLib/ AccountingApp is not a replacement for a commercial ERP system such as SAP. Still the goal for Accountinglib is to be a useful toolkit which can be used as a library in a commercial accounting system. AccountingApp is indended as a useful tool for accountants and auditors to inspect and understand the accounting information.
 
 ## Background and ideas
 
