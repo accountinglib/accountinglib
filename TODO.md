@@ -9,6 +9,7 @@
 - [ ] New invoice
 - [ ] Hibernate? SQLite?
 - [ ] Lookup account name in SAF-T import.
+- [ ] CSV / Excel export 
 
 # International 
 - Factur-x for .fr
