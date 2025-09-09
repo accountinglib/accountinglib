@@ -8,6 +8,7 @@
 - [ ] SAF-T export.
 - [ ] New invoice
 - [ ] Hibernate? SQLite?
+- [ ] Lookup account name in SAF-T import.
 
 # International 
 - Factur-x for .fr

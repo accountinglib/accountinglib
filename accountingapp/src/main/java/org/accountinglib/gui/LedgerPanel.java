@@ -39,10 +39,11 @@ public class LedgerPanel extends JPanel {
         ledgerTableModel.setRowCount(0); // Clear existing rows
         for (Voucher voucher : ledger.getVouchers().values()) {
             for (Posting posting : voucher.getPostings().values()) {
+                String accountNumber = posting.account() != null ? posting.account().number() : "";
                 ledgerTableModel.addRow(new Object[]{
                         voucher.getDate(),
                         voucher.getId(),
-                        null,
+                        accountNumber,
                         posting.description(),
                         posting.amount(),
                 });

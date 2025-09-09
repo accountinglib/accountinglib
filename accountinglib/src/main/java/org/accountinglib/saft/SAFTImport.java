@@ -55,7 +55,11 @@ public class SAFTImport {
                         BigDecimal debitAmount  = line.getDebitAmount()  != null ? line.getDebitAmount().getAmount()  : BigDecimal.ZERO;
                         BigDecimal amount = debitAmount.signum() != 0 ? debitAmount : creditAmount.negate();
 
-                        Posting posting = new Posting(Long.parseLong(line.getRecordID()), null,
+                        Account account = new Account(line.getAccountID(),
+                                "",
+                                new Currency("NOK", "NOK"));
+
+                        Posting posting = new Posting(Long.parseLong(line.getRecordID()), account,
                                 line.getValueDate().toGregorianCalendar().toZonedDateTime().toLocalDate(),
                                 null,
                                 amount,
