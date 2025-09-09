@@ -8,8 +8,6 @@ a standard, universal way according to accounting best practices and accounting 
 
 AccountingLib / AccountingApp are not replacements for commercial ERP systems like SAP for huge conpanies. Still the goal of AccountingLib is to be a useful toolkit which can be used by commercial ERP systems as a library and support tool.
 
-Accountinglib gives companies the freedom to own and maintain their accounting ledgers themselves, since the software is open source and the accounting data can be stored in a preferred database.
-
 ## AccountingLib Features
 [AccountingLib](accountinglib) is a Java library specializing in accounting.  
 * Double entry accounting system core.
@@ -32,8 +30,6 @@ Accountinglib gives companies the freedom to own and maintain their accounting l
 * Java Swing GUI for creating and updating accounting data and reports.
 * View Ledger, Accounts, Vouchers, SAF-T import
 * Validation and display of SAF-T files
-
-
 
 ## Status
 [![](https://jitpack.io/v/accountinglib/accountinglib.svg)](https://jitpack.io/#accountinglib/accountinglib)
@@ -87,6 +83,10 @@ Accountinglib requires Java 21.
 
 Accountinglib is a standards-focused, open source toolkit for accounting for the Java programming language: a double-entry core with built-in SAF-T export and UBL invoice support. 
 It implements a validated ledger system, with SAF-T format, and basic UBL invoice example.
+
+Accountinglib gives companies the freedom to own and maintain their accounting ledgers themselves, since the software is open source and the accounting data can be stored in a preferred database.
+
+AccountingLib/ AccountingApp is not a replacement for a commercial ERP system such as SAP. Still the goal for Accountinglib is to be a useful toolkit which can be used as a library in a commercial accounting system.
 
 ## Background and ideas
 
