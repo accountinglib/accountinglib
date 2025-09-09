@@ -23,6 +23,7 @@ Accountinglib gives companies the freedom to own and maintain their accounting l
 * API integration support (swagger)
 * SQLite database
 * Java Swing GUI for creating and updating accounting data and reports.
+* Validation, generation and manipulation of domains specific to Norway and Norwegian citizens.
 
 
 ## Status
@@ -60,7 +61,8 @@ accountinglib can be used as a Maven dependency. It is built and distributed usi
 </repositories>
 ```
 
-
+## AccountingLibApp
+[AccountingLibApp](https://github.com/accountinglib/accountinglib/blob/main/accountinglib/src/main/java/org/accountinglib/gui/AccountingLibApp.java) is a Swing GUI app for managing accounting ledger and inspecting SAF-T files.
 
 ## Requirements
 Accountinglib requires Java 21.
