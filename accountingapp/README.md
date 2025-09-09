@@ -3,4 +3,4 @@
 AccountingLibApp is a Swing GUI app for managing accounting ledger and inspecting SAF-T files.
 
 ## Running:
-Run the [AccountingLibApp](AccountingLibApp.java) class.
+Run the [AccountingLibApp](src/main/java/org/accountinglib/gui/AccountingLibApp.java) class.
