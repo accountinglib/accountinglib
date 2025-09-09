@@ -23,6 +23,7 @@ a standard, universal way according to accounting best practices and accounting 
 * API integration support (swagger)
 * SQLite database
 * Validation, generation and manipulation of domains specific to Norway and Norwegian citizens.
+* Possibly AI llm integration, currently considering ideas for AI and openai.
 
 ## AccountingApp Features
 [AccountingApp](accountingapp/README.md) is a Swing GUI app for managing accounting ledger and inspecting SAF-T files.  
