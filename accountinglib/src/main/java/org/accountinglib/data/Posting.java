@@ -8,8 +8,7 @@ public record Posting(
         Account account,
         LocalDate date,
         Currency currency,
-        BigDecimal creditAmount,
-        BigDecimal debitAmount,
+        BigDecimal amount,
         String description,
         Employee employee,
         Project project

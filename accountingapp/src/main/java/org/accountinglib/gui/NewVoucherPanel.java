@@ -127,7 +127,6 @@ public class NewVoucherPanel extends JPanel {
                 debitAccount,
                 today,
                 currency,
-                BigDecimal.ZERO,
                 amount,
                 "",
                 null,
@@ -139,7 +138,6 @@ public class NewVoucherPanel extends JPanel {
                 today,
                 currency,
                 amount,
-                BigDecimal.ZERO,
                 "",
                 null,
                 null

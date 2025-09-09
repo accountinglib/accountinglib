@@ -15,7 +15,7 @@ public class LedgerPanel extends JPanel {
     public LedgerPanel() {
         super(new BorderLayout());
         ledgerTableModel = new DefaultTableModel(
-                new Object[]{"Date", "Voucher", "Account", "Description", "Debit", "Credit"}, 0) {
+                new Object[]{"Date", "Voucher", "Account", "Description", "Amount"}, 0) {
             @Override public boolean isCellEditable(int row, int column) {
                 return false;
             }
@@ -44,8 +44,7 @@ public class LedgerPanel extends JPanel {
                         voucher.getId(),
                         null,
                         posting.description(),
-                        posting.debitAmount(),
-                        posting.creditAmount()
+                        posting.amount(),
                 });
             }
         }

@@ -50,10 +50,18 @@ public class SAFTImport {
                     v.setId(Long.parseLong(transaction.getTransactionID()));
                     v.setDate(transaction.getTransactionDate().toGregorianCalendar().toZonedDateTime().toLocalDate());
                     for (AuditFile.GeneralLedgerEntries.Journal.Transaction.Line line : transaction.getLine()) {
-                        Posting posting = new Posting(Long.parseLong(line.getRecordID()), null, line.getValueDate().toGregorianCalendar().toZonedDateTime().toLocalDate(), null,
-                                line.getCreditAmount() != null ? line.getCreditAmount().getAmount() : BigDecimal.ZERO,
-                                line.getDebitAmount() != null ? line.getDebitAmount().getAmount() : BigDecimal.ZERO,
-                                line.getDescription(), null, null);
+
+                        BigDecimal creditAmount = line.getCreditAmount() != null ? line.getCreditAmount().getAmount() : BigDecimal.ZERO;
+                        BigDecimal debitAmount  = line.getDebitAmount()  != null ? line.getDebitAmount().getAmount()  : BigDecimal.ZERO;
+                        BigDecimal amount = debitAmount.signum() != 0 ? debitAmount : creditAmount.negate();
+
+                        Posting posting = new Posting(Long.parseLong(line.getRecordID()), null,
+                                line.getValueDate().toGregorianCalendar().toZonedDateTime().toLocalDate(),
+                                null,
+                                amount,
+                                line.getDescription(),
+                                null,
+                                null);
                         v.getPostings().put(Long.parseLong(line.getRecordID()), posting);
                     }
                     ledger.getVouchers().put(v.getId(), v);
