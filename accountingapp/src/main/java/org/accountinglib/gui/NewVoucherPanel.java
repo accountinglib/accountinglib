@@ -157,7 +157,7 @@ public class NewVoucherPanel extends JPanel {
             // Optionally clear fields
             amountField.setText("");
             statusLabel.setText("Voucher created.");
-            if (parent instanceof AccountingLibApp app) {
+            if (parent instanceof AccountingApp app) {
                 //app.updateLedgerTable();
             }
         } catch (Exception ex) {

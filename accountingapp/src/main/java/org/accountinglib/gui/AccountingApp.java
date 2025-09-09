@@ -13,7 +13,7 @@ import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class AccountingLibApp extends JFrame {
+public class AccountingApp extends JFrame {
 
     private static Context context = new Context();
     private DefaultTableModel ledgerTableModel;
@@ -24,7 +24,7 @@ public class AccountingLibApp extends JFrame {
     private LedgerPanel ledgerPanel;
     private CompanyInformationPanel companyInfoPanel;
 
-    public AccountingLibApp() {
+    public AccountingApp() {
         super("Accounting Library");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(1000, 650));
@@ -66,7 +66,7 @@ public class AccountingLibApp extends JFrame {
         tabs.addTab("Ledger", ledgerPanel);
         accountsPanel = new AccountsPanel();
         tabs.addTab("Accounts", accountsPanel);
-        voucherPanel = new NewVoucherPanel(this);
+        voucherPanel = new NewVoucherPanel(AccountingApp.this);
         tabs.addTab("New Voucher", voucherPanel);
         tabs.addTab("Reports", createPlaceholderPanel("Reports"));
         tabs.addTab("Settings", createPlaceholderPanel("Settings"));
@@ -96,7 +96,7 @@ public class AccountingLibApp extends JFrame {
         toolbar.add(new JButton(new AbstractAction("Import SAF-T") {
             @Override public void actionPerformed(ActionEvent e) {
                 JFileChooser chooser = new JFileChooser();
-                if (chooser.showOpenDialog(AccountingLibApp.this) == JFileChooser.APPROVE_OPTION) {
+                if (chooser.showOpenDialog(AccountingApp.this) == JFileChooser.APPROVE_OPTION) {
                     String filePath = chooser.getSelectedFile().getAbsolutePath();
                     try {
                         File file = new File(filePath);
@@ -109,9 +109,9 @@ public class AccountingLibApp extends JFrame {
                         updateLedgerTable();
                         companyInfoPanel.updateInfo();
 
-                        JOptionPane.showMessageDialog(AccountingLibApp.this, "SAF-T file imported successfully.", "Import", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(AccountingApp.this, "SAF-T file imported successfully.", "Import", JOptionPane.INFORMATION_MESSAGE);
                     } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(AccountingLibApp.this, "Failed to import SAF-T file: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(AccountingApp.this, "Failed to import SAF-T file: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
@@ -137,10 +137,10 @@ public class AccountingLibApp extends JFrame {
 
         JMenuItem newCompanyItem = new JMenuItem(new AbstractAction("New company") {
             @Override public void actionPerformed(ActionEvent e) {
-                NewCompanyDialog dialog = new NewCompanyDialog(AccountingLibApp.this);
+                NewCompanyDialog dialog = new NewCompanyDialog(AccountingApp.this);
                 dialog.setVisible(true);
                 if (dialog.isConfirmed()) {
-                    JOptionPane.showMessageDialog(AccountingLibApp.this, "Company created: " + dialog.getCompany().name(), "New Company", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(AccountingApp.this, "Company created: " + dialog.getCompany().name(), "New Company", JOptionPane.INFORMATION_MESSAGE);
 
                     AccountingCompany accountingCompany = new AccountingCompany(dialog.getCompany(), new Ledger());
                     accountingCompany.initializeChartOfAccounts();
@@ -168,9 +168,9 @@ public class AccountingLibApp extends JFrame {
                 // For now, refresh the current tab
                 int idx = tabs.getSelectedIndex();
                 if (idx == 0) { // Ledger
-                    JOptionPane.showMessageDialog(AccountingLibApp.this, "Ledger refreshed.");
+                    JOptionPane.showMessageDialog(AccountingApp.this, "Ledger refreshed.");
                 } else {
-                    JOptionPane.showMessageDialog(AccountingLibApp.this, "Nothing to refresh here yet.");
+                    JOptionPane.showMessageDialog(AccountingApp.this, "Nothing to refresh here yet.");
                 }
             }
         });
@@ -180,7 +180,7 @@ public class AccountingLibApp extends JFrame {
         helpMenu.setMnemonic('H');
         JMenuItem aboutItem = new JMenuItem(new AbstractAction("About") {
             @Override public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(AccountingLibApp.this,
+                JOptionPane.showMessageDialog(AccountingApp.this,
                         "Accounting Library App\nGNU Lesser General Public License.",
                         "About", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -203,11 +203,11 @@ public class AccountingLibApp extends JFrame {
                 }
             }
         } catch (Exception ex) {
-            Logger.getLogger(AccountingLibApp.class.getName()).log(Level.WARNING, "Failed to set look and feel", ex);
+            Logger.getLogger(AccountingApp.class.getName()).log(Level.WARNING, "Failed to set look and feel", ex);
         }
 
         SwingUtilities.invokeLater(() -> {
-            AccountingLibApp app = new AccountingLibApp();
+            AccountingApp app = new AccountingApp();
             app.setVisible(true);
         });
     }
