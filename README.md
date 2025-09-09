@@ -6,7 +6,6 @@ transparent, and trustworthy across systems.
 Intended for use in accounting systems to ensure that accounting is performed in 
 a standard, universal way according to accounting best practices and accounting standards.  
 
-AccountingLib / AccountingApp are not replacements for commercial ERP systems like SAP for huge conpanies. Still the goal of AccountingLib is to be a useful toolkit which can be used by commercial ERP systems as a library and support tool.
 
 ## AccountingLib Features
 [AccountingLib](accountinglib) is a Java library specializing in accounting.  
