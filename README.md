@@ -68,8 +68,18 @@ accountinglib can be used as a Maven dependency. It is built and distributed usi
 </repositories>
 ```
 
-## Requirements
+## Requirements and Dependencies
 Accountinglib requires Java 21.
+
+* hibernate-validator
+* sqlite-jdbc
+* ph-ubl21
+* openpdf
+* slf4j-api
+* commons-csv
+* junit
+* jakarta.xml.bind-api
+* jakarta.activation-api
 
 ## Why?
 
