@@ -27,6 +27,7 @@ Accountinglib gives companies the freedom to own and maintain their accounting l
 ## AccountingApp Features
 * Java Swing GUI for creating and updating accounting data and reports.
 * View Ledger, Accounts, Vouchers, SAF-T import
+* Validation and display of SAF-T files
 
 
 
