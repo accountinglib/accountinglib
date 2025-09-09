@@ -1,5 +1,6 @@
 # TODO — accountinglib
 
+- [ ] Display SAF-T transactions as vouchers in AccountingApp.
 - [ ] Validation of SAF-T files. Swing GUI?
 - [ ] Improve new company dialog
 - [ ] Improve new voucher dialog
