@@ -6,6 +6,8 @@ transparent, and trustworthy across systems.
 Intended for use in accounting systems to ensure that accounting is performed in 
 a standard, universal way according to accounting best practices and accounting standards.  
 
+AccountingLib / AccountingApp are not replacements for commercial ERP systems like SAP for huge conpanies. Still the goal of AccountingLib is to be a useful toolkit which can be used by commercial ERP systems as a library and support tool.
+
 Accountinglib gives companies the freedom to own and maintain their accounting ledgers themselves, since the software is open source and the accounting data can be stored in a preferred database.
 
 ## AccountingLib Features
