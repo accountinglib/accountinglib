@@ -8,7 +8,7 @@ a standard, universal way according to accounting best practices and accounting 
 
 Accountinglib gives companies the freedom to own and maintain their accounting ledgers themselves, since the software is open source and the accounting data can be stored in a preferred database.
 
-## Features
+## AccountingLib Features
 * Double entry accounting system core.
 * Accounting domain objects (Voucher, Invoice, Posting, OrderLines).
 * Supplier Invoices (incoming) and Invoices (outgoing).
@@ -22,8 +22,12 @@ Accountinglib gives companies the freedom to own and maintain their accounting l
 * VAT rate calculations (EU) and sales tax calculations (USA).
 * API integration support (swagger)
 * SQLite database
-* Java Swing GUI for creating and updating accounting data and reports.
 * Validation, generation and manipulation of domains specific to Norway and Norwegian citizens.
+
+## AccountingApp Features
+* Java Swing GUI for creating and updating accounting data and reports.
+* View Ledger, Accounts, Vouchers, SAF-T import
+
 
 
 ## Status
