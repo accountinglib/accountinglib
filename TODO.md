@@ -9,7 +9,8 @@
 - [ ] New invoice
 - [ ] Hibernate? SQLite?
 - [ ] Lookup account name in SAF-T import.
-- [ ] CSV / Excel export 
+- [ ] CSV / Excel export
+- [ ] https://github.com/tjake/Jlama
 
 # International 
 - Factur-x for .fr
