@@ -61,8 +61,8 @@ accountinglib can be used as a Maven dependency. It is built and distributed usi
 </repositories>
 ```
 
-## AccountingLibApp
-[AccountingLibApp](accountingapp/README.md) is a Swing GUI app for managing accounting ledger and inspecting SAF-T files.
+## AccountingApp
+[AccountingApp](accountingapp/README.md) is a Swing GUI app for managing accounting ledger and inspecting SAF-T files.
 
 ## Requirements
 Accountinglib requires Java 21.
