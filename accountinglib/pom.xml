@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.accountinglib</groupId>
-    <artifactId>accountinglib-parent</artifactId>
+    <artifactId>accountinglib</artifactId>
     <version>0.9.0</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
-    <name>The Accounting Library - parent</name>
+    <name>The Accounting Library - core library</name>
     <description>
         The Accounting Library (accountinglib) is an open source library for accounting in Java.
     </description>
@@ -31,10 +31,6 @@
         <tag>HEAD</tag>
     </scm>
 
-    <modules>
-      <module>accountinglib</module>
-      <module>data-common-norway</module>  
-  </modules>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
