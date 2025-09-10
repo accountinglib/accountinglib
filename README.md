@@ -6,7 +6,6 @@ transparent, and trustworthy across systems.
 Intended for use in accounting systems to ensure that accounting is performed in 
 a standard, universal way according to accounting best practices and accounting standards.  
 
-
 ## AccountingLib Features
 [AccountingLib](accountinglib) is a Java library specializing in accounting.  
 * Double entry accounting system core.
@@ -26,10 +25,13 @@ a standard, universal way according to accounting best practices and accounting 
 * Possibly AI llm integration, currently considering ideas for AI and openai. see https://github.com/tjake/Jlama
 
 ## AccountingApp Features
-[AccountingApp](accountingapp/README.md) is a Swing GUI app for managing accounting ledger and inspecting SAF-T files.  
+[AccountingApp](accountingapp/) is a Swing GUI app for managing accounting ledger and inspecting SAF-T files.  
 * Java Swing GUI for creating and updating accounting data and reports.
 * View Ledger, Accounts, Vouchers, SAF-T import
 * Validation and display of SAF-T files
+
+## AccountingLib-AI Features
+* [AccountingLib-ai](accountinglib-ai/) is for development of AI for use in accounting. Uses https://github.com/tjake/Jlama
 
 ## Status
 [![](https://jitpack.io/v/accountinglib/accountinglib.svg)](https://jitpack.io/#accountinglib/accountinglib)
@@ -69,7 +71,7 @@ accountinglib can be used as a Maven dependency. It is built and distributed usi
 ## Requirements and Dependencies
 Accountinglib requires Java 21.
 
-* hibernate-validator
+Accoutinglib:
 * sqlite-jdbc
 * ph-ubl21
 * openpdf
@@ -78,6 +80,10 @@ Accountinglib requires Java 21.
 * junit
 * jakarta.xml.bind-api
 * jakarta.activation-api
+* hibernate-validator
+
+Accountinglib-ai:
+* Jlama - https://github.com/tjake/Jlama
 
 ## Why?
 

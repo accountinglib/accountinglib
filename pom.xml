@@ -34,6 +34,7 @@
     <modules>
       <module>accountinglib</module>
       <module>accountingapp</module>
+        <module>accountinglib-ai</module>
   </modules>
 
     <properties>
