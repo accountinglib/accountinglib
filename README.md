@@ -6,7 +6,7 @@ transparent, and trustworthy across systems.
 Intended for use in accounting systems to ensure that accounting is performed in 
 a standard, universal way according to accounting best practices and accounting standards.  
 
-## AccountingLib Features
+## AccountingLib 
 [AccountingLib](accountinglib) is a Java library specializing in accounting.  
 * Double entry accounting system core.
 * Accounting domain objects (Voucher, Invoice, Posting, OrderLines).
@@ -24,13 +24,13 @@ a standard, universal way according to accounting best practices and accounting 
 * Validation, generation and manipulation of domains specific to Norway and Norwegian citizens.
 * Possibly AI llm integration, currently considering ideas for AI and openai. see https://github.com/tjake/Jlama
 
-## AccountingApp Features
+## AccountingApp 
 [AccountingApp](accountingapp/) is a Swing GUI app for managing accounting ledger and inspecting SAF-T files.  
 * Java Swing GUI for creating and updating accounting data and reports.
 * View Ledger, Accounts, Vouchers, SAF-T import
 * Validation and display of SAF-T files
 
-## AccountingLib-AI Features
+## AccountingLib-AI 
 * [AccountingLib-AI](accountinglib-ai/) is for development of AI for use in accounting. Uses https://github.com/tjake/Jlama
 
 ## Status
