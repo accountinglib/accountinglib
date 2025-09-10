@@ -31,7 +31,7 @@ a standard, universal way according to accounting best practices and accounting 
 * Validation and display of SAF-T files
 
 ## AccountingLib-AI Features
-* [AccountingLib-ai](accountinglib-ai/) is for development of AI for use in accounting. Uses https://github.com/tjake/Jlama
+* [AccountingLib-AI](accountinglib-ai/) is for development of AI for use in accounting. Uses https://github.com/tjake/Jlama
 
 ## Status
 [![](https://jitpack.io/v/accountinglib/accountinglib.svg)](https://jitpack.io/#accountinglib/accountinglib)
