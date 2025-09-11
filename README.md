@@ -76,6 +76,7 @@ Accoutinglib:
 * ph-ubl21
 * openpdf
 * slf4j-api
+* commons-lang
 * commons-csv
 * junit
 * jakarta.xml.bind-api
