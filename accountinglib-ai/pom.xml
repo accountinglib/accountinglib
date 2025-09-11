@@ -4,9 +4,14 @@
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>com.github.accountinglib</groupId>
+        <artifactId>accountinglib-parent</artifactId>
+        <version>0.9.0</version>
+    </parent>
+
     <groupId>com.github.accountinglib</groupId>
     <artifactId>accountinglib-ai</artifactId>
-    <version>0.9.0</version>
     <packaging>jar</packaging>
 
     <name>The Accounting Library - ai</name>
@@ -30,17 +35,6 @@
         <developerConnection>scm:git:ssh://git@github.com/accountinglib/accountinglib.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
-
-
-    <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <slf4j.version>2.0.17</slf4j.version>
-        <logback.version>1.5.18</logback.version>
-        <jlama.version>0.8.4</jlama.version>
-    </properties>
-
 
     <dependencies>
         <dependency>
@@ -100,7 +94,6 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.14.0</version>
                 <configuration>
-                    <release>21</release>
                     <compilerArgs>
                         <arg>--add-modules</arg>
                         <arg>jdk.incubator.vector</arg>
