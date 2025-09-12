@@ -10,7 +10,7 @@
 - [ ] Hibernate storage
 - [ ] Lookup account name in SAF-T import.
 - [ ] CSV / Excel export
-- [ ] Idea: one big table like SAP ACDOCA.
+- [ ] Idea: one big table like SAP ACDOCA, because SQL joins are slow.
 - [ ] https://github.com/tjake/Jlama
 
 # International 
