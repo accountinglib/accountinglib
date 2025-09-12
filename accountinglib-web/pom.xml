@@ -17,11 +17,6 @@
 	<name>accountinglib-api</name>
 	<description>Public API layer for AccountingLib (Spring Boot starters)</description>
 
-	<properties>
-		<!-- Keep Boot version centralized here; update as needed -->
-		<spring-boot.version>3.3.5</spring-boot.version>
-	</properties>
-
 	<!-- Import Spring Boot dependency management so we don't hardcode versions of starters/drivers -->
 	<dependencyManagement>
 		<dependencies>
