@@ -20,7 +20,7 @@ a standard, universal way according to accounting best practices and accounting 
 * Currency rate conversions.
 * VAT rate calculations (EU) and sales tax calculations (USA).
 * API integration support (swagger)
-* Hibernate ORM framework for database storage (Mysql, H2 or SQLite database connector)
+* Hibernate ORM framework for database storage (Mysql or H2 database connector)
 * Validation, generation and manipulation of domains specific to Norway and Norwegian citizens.
 * Possibly AI llm integration, currently considering ideas for AI and openai. see https://github.com/tjake/Jlama
 
@@ -74,7 +74,7 @@ accountinglib can be used as a Maven dependency. It is built and distributed usi
 Accountinglib requires Java 21.
 
 Accoutinglib:
-* sqlite-jdbc
+* Hibernate
 * ph-ubl21
 * openpdf
 * slf4j-api
