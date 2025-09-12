@@ -20,7 +20,7 @@ a standard, universal way according to accounting best practices and accounting 
 * Currency rate conversions.
 * VAT rate calculations (EU) and sales tax calculations (USA).
 * API integration support (swagger)
-* SQLite database
+* Hibernate ORM framwrork (Mysql or SQLite database)
 * Validation, generation and manipulation of domains specific to Norway and Norwegian citizens.
 * Possibly AI llm integration, currently considering ideas for AI and openai. see https://github.com/tjake/Jlama
 
