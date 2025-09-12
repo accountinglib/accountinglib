@@ -33,6 +33,9 @@ a standard, universal way according to accounting best practices and accounting 
 ## AccountingLib-AI 
 * [AccountingLib-AI](accountinglib-ai/) is for development of AI for use in accounting. Uses https://github.com/tjake/Jlama
 
+## AccountingLib-Web
+* Spring boot webapp
+
 ## Status
 [![](https://jitpack.io/v/accountinglib/accountinglib.svg)](https://jitpack.io/#accountinglib/accountinglib)
 ![CI](https://github.com/accountinglib/accountinglib/actions/workflows/maven.yml/badge.svg)
