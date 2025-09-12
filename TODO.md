@@ -7,7 +7,7 @@
 - [ ] storage to DB.
 - [ ] SAF-T export.
 - [ ] New invoice
-- [ ] Hibernate? SQLite?
+- [ ] Hibernate storage
 - [ ] Lookup account name in SAF-T import.
 - [ ] CSV / Excel export
 - [ ] https://github.com/tjake/Jlama

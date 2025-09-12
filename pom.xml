@@ -47,33 +47,11 @@
         <logback.version>1.5.18</logback.version>
         <jakarta.xml.version>4.0.0</jakarta.xml.version>
         <jlama.version>0.8.4</jlama.version>
+
+        <hibernate.version>6.6.1.Final</hibernate.version>
+        <jakarta.persistence.version>3.2.0</jakarta.persistence.version>
+        <mysql.version>9.1.0</mysql.version>
+        <hikari.version>5.1.0</hikari.version>
     </properties>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.jvnet.jaxb</groupId>
-                <artifactId>jaxb-maven-plugin</artifactId>
-                <version>4.0.10</version>
-                <executions>
-                      <execution>
-                        <id>generate-saf-t</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>
-                            <schemaIncludes>
-                                <include>Norwegian_SAF-T_Financial_Schema_v_1.30.xsd</include>
-                            </schemaIncludes>
-                            <generatePackage>org.accountinglib.saft</generatePackage>
-                            <packageLevelAnnotations>true</packageLevelAnnotations>
-                            <generateDirectory>${project.build.directory}/generated-sources/saf-t</generateDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>
