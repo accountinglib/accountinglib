@@ -34,7 +34,8 @@
     <modules>
       <module>accountinglib</module>
       <module>accountingapp</module>
-        <module>accountinglib-ai</module>
+      <module>accountinglib-ai</module>
+      <module>accountinglib-api</module>
   </modules>
 
     <properties>
@@ -50,7 +51,7 @@
 
         <hibernate.version>6.6.1.Final</hibernate.version>
         <jakarta.persistence.version>3.2.0</jakarta.persistence.version>
-        <mysql.version>9.1.0</mysql.version>
+        <mysql-connector.version>9.4.0</mysql-connector.version>
         <hikari.version>5.1.0</hikari.version>
     </properties>
 

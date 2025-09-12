@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.github.accountinglib</groupId>
+        <artifactId>accountinglib-parent</artifactId>
+        <version>0.9.0</version>
+    </parent>
+
+    <groupId>com.github.accountinglib</groupId>
+    <artifactId>accountinglib-api</artifactId>
+    <packaging>jar</packaging>
+
+    <name>The Accounting Library - API</name>
+    <description>
+        The Accounting Library (accountinglib) is an open source library for accounting in Java.
+    </description>
+    <url>https://github.com/accountinglib/accountinglib</url>
+
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public License v2.1</name>
+            <url>https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+
+    <scm>
+        <url>https://github.com/accountinglib/accountinglib</url>
+        <connection>scm:git:git://github.com/accountinglib/accountinglib.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/accountinglib/accountinglib.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.accountinglib</groupId>
+            <artifactId>accountinglib</artifactId>
+            <version>0.9.0</version>
+        </dependency>
+    </dependencies>
+</project>
