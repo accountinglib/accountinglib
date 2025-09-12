@@ -7,7 +7,7 @@
 - [ ] storage to DB.
 - [ ] SAF-T export.
 - [ ] New invoice
-- [ ] Hibernate storage
+- [ ] Hibernate storage. Create META-INF/persistence.xml
 - [ ] Lookup account name in SAF-T import.
 - [ ] CSV / Excel export
 - [ ] Idea: one big table like SAP ACDOCA, because SQL joins are slow.
