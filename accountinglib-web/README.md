@@ -1,11 +1,16 @@
 AccountingLibWeb
 ================
 
-A Java Spring boot application.  
+Tech:
+* Java Spring boot application.
+* Thymeleaf - https://www.thymeleaf.org/
 
 Web usage
 ========= 
-Start the application and open the application here:
+Start the application: 
+mvn spring-boot:run
+
+Open the application here:
 http://localhost:8080/
 
 
@@ -17,11 +22,3 @@ http://localhost:8080/api/createOrder?customerId=3452&productIds=3452
 
 Get order:
 http://localhost:8080/api/order/143
-
-
-# Running:
-
-mvn spring-boot:run
-
-
-
