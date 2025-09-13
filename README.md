@@ -35,6 +35,7 @@ a standard, universal way according to accounting best practices and accounting 
 
 ## AccountingLib-Web
 * Spring boot webapp
+* Thymeleaf - https://www.thymeleaf.org/
 
 ## Status
 [![](https://jitpack.io/v/accountinglib/accountinglib.svg)](https://jitpack.io/#accountinglib/accountinglib)
