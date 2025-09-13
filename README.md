@@ -33,7 +33,7 @@ a standard, universal way according to accounting best practices and accounting 
 ## AccountingLib-AI 
 * [AccountingLib-AI](accountinglib-ai/) is for development of AI for use in accounting. Uses https://github.com/tjake/Jlama
 
-## AccountingLib-Web
+## Accountinglib-web
 * Spring boot webapp
 * Thymeleaf - https://www.thymeleaf.org/
 
