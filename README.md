@@ -25,6 +25,7 @@ a standard, universal way according to accounting best practices and accounting 
 * Possibly AI llm integration, currently considering ideas for AI and openai. see https://github.com/tjake/Jlama
 
 ## Accountinglib-web
+[Accountinglib-web](accountinglib-web/) is a web based accounting application, at least the very early stages of one.
 * Spring boot webapp
 * Thymeleaf - https://www.thymeleaf.org/
 
