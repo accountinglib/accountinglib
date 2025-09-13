@@ -24,6 +24,10 @@ a standard, universal way according to accounting best practices and accounting 
 * Validation, generation and manipulation of domains specific to Norway and Norwegian citizens.
 * Possibly AI llm integration, currently considering ideas for AI and openai. see https://github.com/tjake/Jlama
 
+## Accountinglib-web
+* Spring boot webapp
+* Thymeleaf - https://www.thymeleaf.org/
+
 ## AccountingApp 
 [AccountingApp](accountingapp/) is a Swing GUI app for managing accounting ledger and inspecting SAF-T files.  
 * Java Swing GUI for creating and updating accounting data and reports.
@@ -32,10 +36,6 @@ a standard, universal way according to accounting best practices and accounting 
 
 ## AccountingLib-AI 
 * [AccountingLib-AI](accountinglib-ai/) is for development of AI for use in accounting. Uses https://github.com/tjake/Jlama
-
-## Accountinglib-web
-* Spring boot webapp
-* Thymeleaf - https://www.thymeleaf.org/
 
 ## Status
 [![](https://jitpack.io/v/accountinglib/accountinglib.svg)](https://jitpack.io/#accountinglib/accountinglib)
