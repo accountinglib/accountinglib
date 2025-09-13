@@ -1,4 +1,4 @@
-AccountingLibWeb
+accountinglib-web
 ================
 
 Tech:
