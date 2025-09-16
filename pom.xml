@@ -50,7 +50,7 @@
         <jakarta.xml.version>4.0.0</jakarta.xml.version>
         <jlama.version>0.8.4</jlama.version>
 
-        <hibernate.version>6.6.1.Final</hibernate.version>
+        <hibernate.version>7.1.1.Final</hibernate.version>
         <jakarta.persistence.version>3.2.0</jakarta.persistence.version>
         <mysql-connector.version>9.4.0</mysql-connector.version>
         <hikari.version>5.1.0</hikari.version>
